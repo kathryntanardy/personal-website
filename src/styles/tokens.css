@@ -1,0 +1,65 @@
+:root {
+    --white: #FFFFFF;
+    
+    /* Yellow */
+    --foundation-yellow-yellow-50: #FFFEFA;
+    --foundation-yellow-yellow-100: #FFFCF0;
+    --foundation-yellow-yellow-200: #FFFAE8;
+    --foundation-yellow-yellow-300: #FFF8DE;
+    --foundation-yellow-yellow-400: #FFF6D8;
+    --foundation-yellow-yellow-500: #FFF4CE;
+    --foundation-yellow-yellow-600: #E8DEBB;
+    --foundation-yellow-yellow-700: #B5AD92;
+    --foundation-yellow-yellow-800: #8C8671;
+    --foundation-yellow-yellow-900: #6B6657;
+
+    /* White */
+    --foundation-white-white-50: #FFFFFE;
+    --foundation-white-white-100: #FFFEFB;
+    --foundation-white-white-200: #FFFEF9;
+    --foundation-white-white-300: #FFFEF7;
+    --foundation-white-white-400: #FFFDF5;
+    --foundation-white-white-500: #FFFDF3;
+    --foundation-white-white-600: #E8E6DD;
+    --foundation-white-white-700: #B5B4AD;
+    --foundation-white-white-800: #8C8B86;
+    --foundation-white-white-900: #6B6A66;
+    --foundation-white-color: #FFFFFF;
+    --foundation-white: #FFFFFF;
+
+    /* Orange */
+    --foundation-orange-orange-50: #FEFAF8;
+    --foundation-orange-orange-100: #FCEFE9;
+    --foundation-orange-orange-200: #FBE7DE;
+    --foundation-orange-orange-300: #F9DBCF;
+    --foundation-orange-orange-400: #F8D5C5;
+    --foundation-orange-orange-500: #F6CAB7;
+    --foundation-orange-orange-600: #E0B8A7;
+    --foundation-orange-orange-700: #AF8F82;
+    --foundation-orange-orange-800: #876F65;
+    --foundation-orange-orange-900: #67554D;
+
+    /* Green */
+    --foundation-green-green-50: #FAFDFA;
+    --foundation-green-green-100: #F0F9F0;
+    --foundation-green-green-200: #E8F7E8;
+    --foundation-green-green-300: #DEF3DF;
+    --foundation-green-green-400: #D7F1D8;
+    --foundation-green-green-500: #CDEDCE;
+    --foundation-green-green-600: #BBD8BB;
+    --foundation-green-green-700: #92A892;
+    --foundation-green-green-800: #718271;
+    --foundation-green-green-900: #566457;
+
+    /* Blue */
+    --foundation-blue-blue-50: #F8FBFC;
+    --foundation-blue-blue-100: #E9F3F7;
+    --foundation-blue-blue-200: #DFEDF3;
+    --foundation-blue-blue-300: #D0E5EE;
+    --foundation-blue-blue-400: #C7E0EA;
+    --foundation-blue-blue-500: #B9D8E5;
+    --foundation-blue-blue-600: #A8C5D0;
+    --foundation-blue-blue-700: #8399A3;
+    --foundation-blue-blue-800: #66777E;
+    --foundation-blue-blue-900: #4E5B60;
+}

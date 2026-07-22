@@ -1,6 +1,8 @@
 :root {
     --white: #FFFFFF;
-    
+    --background: #FFFBF4;
+    --text-primary: #8B5347;
+
     /* Yellow */
     --foundation-yellow-yellow-50: #FFFEFA;
     --foundation-yellow-yellow-100: #FFFCF0;
@@ -62,4 +64,23 @@
     --foundation-blue-blue-700: #8399A3;
     --foundation-blue-blue-800: #66777E;
     --foundation-blue-blue-900: #4E5B60;
+
+    --color-background: var(--background);
+    --color-surface: var(--foundation-white-white-50);
+    --color-text: var(--foundation-blue-blue-900);
+    --color-text-strong: var(--text-primary);
+    --color-text-muted: var(--foundation-orange-orange-900);
+    --color-border: var(--foundation-white-white-600);
+    --color-accent: var(--text-primary);
+
+    --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --font-handwriting: 'Kapakana', cursive;
+    --font-albert-sans: 'Albert Sans', sans-serif;
+    --font-system-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-korean-serif: 'Jeju Myeongjo', 'AppleMyungjo', 'Batang', serif;
+
+    --font-body: var(--font-albert-sans);
+    --font-h1: var(--font-serif);
+    --font-h2: var(--font-handwriting);
+    --font-h3: var(--font-korean-serif);
 }

@@ -1,0 +1,54 @@
+.window {
+  width: fit-content;
+  border: 2px solid var(--foundation-orange-orange-900);
+  background: var(--color-surface);
+  box-shadow: 0 1px 0 rgb(103 85 77 / 0.2);
+}
+
+.header {
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 4px 0 10px;
+  border-bottom: 2px solid var(--foundation-orange-orange-900);
+  background: var(--foundation-orange-orange-300);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.header:active {
+  cursor: grabbing;
+}
+
+.closeButton {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.closeButton img {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  color: var(--text-primary);
+}
+
+.body {
+  background: var(--color-surface);
+}

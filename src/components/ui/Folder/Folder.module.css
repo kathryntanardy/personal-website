@@ -1,0 +1,17 @@
+.folder {
+  position: absolute;
+}
+
+.image {
+  display: block;
+  max-width: min(100%, 72vw);
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+}
+
+@media (max-width: 720px) {
+  .image {
+    max-width: 72vw;
+  }
+}

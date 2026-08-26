@@ -1,24 +1,25 @@
+import { NavLink } from 'react-router-dom'
 import styles from './NavBar.module.css'
 
 const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Portfolio', href: '#portofolio' },
+  { label: 'About', to: '/about' },
+  { label: 'Portfolio', to: '/portfolio' },
 ]
 
 function NavBar() {
   return (
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Primary navigation">
-        <a className={styles.brand} href="/">
+        <NavLink className={styles.brand} to="/">
           Kathryn Tanardy
-        </a>
+        </NavLink>
 
         <ul className={styles.links}>
           {navItems.map((item) => (
-            <li key={item.href}>
-              <a className={styles.link} href={item.href}>
+            <li key={item.to}>
+              <NavLink className={styles.link} to={item.to}>
                 {item.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>

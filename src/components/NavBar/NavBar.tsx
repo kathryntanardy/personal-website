@@ -1,7 +1,7 @@
 import styles from './NavBar.module.css'
 
 const navItems = [
-  { label: 'Work', href: '#work' },
+  { label: 'About', href: '#about' },
   { label: 'Portfolio', href: '#portofolio' },
 ]
 

@@ -2,7 +2,7 @@
   position: absolute;
 }
 
-.image {
+.media {
   display: block;
   max-width: min(100%, 72vw);
   height: auto;
@@ -11,7 +11,7 @@
 }
 
 @media (max-width: 720px) {
-  .image {
+  .media {
     max-width: 72vw;
   }
 }

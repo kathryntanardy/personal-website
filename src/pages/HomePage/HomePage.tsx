@@ -5,8 +5,8 @@ import styles from './HomePage.module.css'
 
 const desktopFolders = [
     {
-        id: 'me',
-        title: 'me.jpg',
+        id: 'chiro',
+        title: 'chiro.jpg',
         imageSrc: '/desktopImages/image1.jpg',
         width: 'clamp(200px, 25vw, 350px)',
         position: { left: '8vw', top: '7vh', zIndex: 1 },
@@ -16,7 +16,7 @@ const desktopFolders = [
         title: 'fall.jpg',
         imageSrc: '/desktopImages/image2.jpg',
         width: 'clamp(170px, 12vw, 350px)',
-        position: { left: '40vw', top: '30vh', zIndex: 1 },
+        position: { left: '45vw', top: '30vh', zIndex: 1 },
     },
     {
         id: 'cheesecake',
@@ -38,6 +38,21 @@ const desktopFolders = [
         imageSrc: '/desktopImages/image5.jpg',
         width: 'clamp(200px, 13vw, 350px)',
         position: { left: '75vw', top: '20vh', zIndex: 4 },
+    },
+    {
+        id: 'ariana',
+        title: 'ariana.jpg',
+        imageSrc: '/desktopImages/image6.jpg',
+        width: 'clamp(130px, 15vw, 220px)',
+        position: { left: '28vw', top: '38vh', zIndex: 5 },
+    },
+    {
+        id: 'video1',
+        title: 'video1.mov',
+        imageSrc: '/desktopImages/video1.m4v',
+        mediaType: 'video' as const,
+        width: 'clamp(150px, 18vw, 300px)',
+        position: { left: '58vw', top: '10vh', zIndex: 6 },
     },
 ]
 
@@ -65,6 +80,7 @@ function HomePage() {
                     <Folder
                         key={folder.id}
                         imageSrc={folder.imageSrc}
+                        mediaType={folder.mediaType}
                         onClose={() => closeFolder(folder.id)}
                         position={folder.position}
                         width={folder.width}

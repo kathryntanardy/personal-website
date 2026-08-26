@@ -10,6 +10,7 @@ export type FolderPosition = {
 
 type FolderProps = {
   imageSrc: string
+  mediaType?: 'image' | 'video'
   position: FolderPosition
   width: number | string
   onClose: () => void
@@ -22,7 +23,7 @@ type DragState = {
   offsetY: number
 }
 
-function Folder({ imageSrc, position, width, onClose }: FolderProps) {
+function Folder({ imageSrc, mediaType = 'image', position, width, onClose }: FolderProps) {
   const [currentPosition, setCurrentPosition] = useState<FolderPosition>(position)
   const [dragState, setDragState] = useState<DragState | null>(null)
 
@@ -72,7 +73,13 @@ function Folder({ imageSrc, position, width, onClose }: FolderProps) {
         zIndex: currentPosition.zIndex,
       }}
     >
-      <img className={styles.image} src={imageSrc} alt="" style={{ width }} />
+      {mediaType === 'video' ? (
+        <video className={styles.media} autoPlay loop muted playsInline preload="auto" style={{ width }}>
+          <source src={imageSrc} type="video/mp4" />
+        </video>
+      ) : (
+        <img className={styles.media} src={imageSrc} alt="" style={{ width }} />
+      )}
     </Window>
   )
 }

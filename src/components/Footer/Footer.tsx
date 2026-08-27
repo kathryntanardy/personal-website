@@ -22,7 +22,7 @@ function Footer() {
           <a className={styles.brand} href="#home">
             Kathryn Tanardy
           </a>
-          <p className={styles.description}>Thanks for stopping by :)</p>
+          <p className={styles.description}>Thank you for stopping by :)</p>
         </div>
 
         <nav className={styles.footerNav} aria-label="Footer navigation">

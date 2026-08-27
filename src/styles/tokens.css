@@ -76,6 +76,7 @@
 
     --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
     --font-handwriting: 'Kapakana', cursive;
+    --font-inter: 'Inter', var(--font-system-sans);
     --font-albert-sans: 'Albert Sans', sans-serif;
     --font-system-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     --font-korean-serif: 'Jeju Myeongjo', 'AppleMyungjo', 'Batang', serif;

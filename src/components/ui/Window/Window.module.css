@@ -3,6 +3,16 @@
   border: 2px solid var(--foundation-orange-orange-900);
   background: var(--color-surface);
   box-shadow: 0 1px 0 rgb(103 85 77 / 0.2);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.window:active {
+  cursor: grabbing;
 }
 
 .header {
@@ -13,13 +23,6 @@
   padding: 0 4px 0 10px;
   border-bottom: 2px solid var(--foundation-orange-orange-900);
   background: var(--foundation-orange-orange-300);
-  cursor: grab;
-  touch-action: none;
-  user-select: none;
-}
-
-.header:active {
-  cursor: grabbing;
 }
 
 .closeButton {
@@ -51,4 +54,21 @@
 
 .body {
   background: var(--color-surface);
+}
+
+@media (hover: hover) {
+  .window:hover {
+    box-shadow: 0 10px 22px rgb(103 85 77 / 0.18);
+    transform: translateY(-4px) rotate(-1.2deg);
+  }
+
+  .window:hover .header {
+    background: var(--foundation-orange-orange-400);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window {
+    transition: none;
+  }
 }

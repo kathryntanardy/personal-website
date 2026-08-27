@@ -58,8 +58,17 @@ const desktopFolders = [
     },
 ]
 
+const initialFolderLayers = desktopFolders.reduce<Record<string, number>>((layers, folder) => {
+    layers[folder.id] = folder.position.zIndex ?? 1
+    return layers
+}, {})
+
+const initialTopLayer = Math.max(...Object.values(initialFolderLayers))
+
 function HomePage() {
     const [openFolderIds, setOpenFolderIds] = useState(() => desktopFolders.map((folder) => folder.id))
+    const [folderLayers, setFolderLayers] = useState(initialFolderLayers)
+    const [topLayer, setTopLayer] = useState(initialTopLayer)
     const [isTrashOpen, setIsTrashOpen] = useState(false)
 
     const openFolders = desktopFolders.filter((folder) => openFolderIds.includes(folder.id))
@@ -73,6 +82,16 @@ function HomePage() {
         setOpenFolderIds((currentIds) => [...currentIds, folderId])
     }
 
+    function bringFolderToFront(folderId: string) {
+        const nextTopLayer = topLayer + 1
+
+        setTopLayer(nextTopLayer)
+        setFolderLayers((currentLayers) => ({
+            ...currentLayers,
+            [folderId]: nextTopLayer,
+        }))
+    }
+
     return (
         <main className={styles.home}>
             <section id="home" className={styles.desktop} aria-label="Photo desktop">
@@ -82,8 +101,10 @@ function HomePage() {
                         imageSrc={folder.imageSrc}
                         mediaType={folder.mediaType}
                         onClose={() => closeFolder(folder.id)}
+                        onSelect={() => bringFolderToFront(folder.id)}
                         position={folder.position}
                         width={folder.width}
+                        zIndex={folderLayers[folder.id]}
                     />
                 ))}
 

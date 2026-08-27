@@ -6,6 +6,9 @@ type WindowProps = {
     className?: string
     style?: CSSProperties
     onClose?: () => void
+    onPointerDown?: PointerEventHandler<HTMLElement>
+    onPointerMove?: PointerEventHandler<HTMLElement>
+    onPointerUp?: PointerEventHandler<HTMLElement>
     onHeaderPointerDown?: PointerEventHandler<HTMLDivElement>
     onHeaderPointerMove?: PointerEventHandler<HTMLDivElement>
     onHeaderPointerUp?: PointerEventHandler<HTMLDivElement>
@@ -16,12 +19,22 @@ function Window({
     className,
     style,
     onClose,
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
     onHeaderPointerDown,
     onHeaderPointerMove,
     onHeaderPointerUp,
 }: WindowProps) {
     return (
-        <article className={[styles.window, className].filter(Boolean).join(' ')} style={style}>
+        <article
+            className={[styles.window, className].filter(Boolean).join(' ')}
+            onLostPointerCapture={onPointerUp}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            style={style}
+        >
             <div
                 className={styles.header}
                 onLostPointerCapture={onHeaderPointerUp}

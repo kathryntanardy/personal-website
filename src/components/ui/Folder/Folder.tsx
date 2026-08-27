@@ -14,6 +14,8 @@ type FolderProps = {
   position: FolderPosition
   width: number | string
   onClose: () => void
+  onSelect: () => void
+  zIndex: number
 }
 
 type DragState = {
@@ -23,11 +25,11 @@ type DragState = {
   offsetY: number
 }
 
-function Folder({ imageSrc, mediaType = 'image', position, width, onClose }: FolderProps) {
+function Folder({ imageSrc, mediaType = 'image', position, width, onClose, onSelect, zIndex }: FolderProps) {
   const [currentPosition, setCurrentPosition] = useState<FolderPosition>(position)
   const [dragState, setDragState] = useState<DragState | null>(null)
 
-  function startDrag(event: PointerEvent<HTMLDivElement>) {
+  function startDrag(event: PointerEvent<HTMLElement>) {
     if (event.button !== 0) return
 
     const windowElement = event.currentTarget.closest('article')
@@ -38,6 +40,8 @@ function Folder({ imageSrc, mediaType = 'image', position, width, onClose }: Fol
     const containerRect = containerElement.getBoundingClientRect()
 
     event.currentTarget.setPointerCapture(event.pointerId)
+    event.preventDefault()
+    onSelect()
     setDragState({
       containerLeft: containerRect.left,
       containerTop: containerRect.top,
@@ -46,7 +50,7 @@ function Folder({ imageSrc, mediaType = 'image', position, width, onClose }: Fol
     })
   }
 
-  function drag(event: PointerEvent<HTMLDivElement>) {
+  function drag(event: PointerEvent<HTMLElement>) {
     if (!dragState) return
 
     setCurrentPosition((previousPosition) => ({
@@ -64,21 +68,21 @@ function Folder({ imageSrc, mediaType = 'image', position, width, onClose }: Fol
     <Window
       className={styles.folder}
       onClose={onClose}
-      onHeaderPointerDown={startDrag}
-      onHeaderPointerMove={drag}
-      onHeaderPointerUp={stopDrag}
+      onPointerDown={startDrag}
+      onPointerMove={drag}
+      onPointerUp={stopDrag}
       style={{
         left: currentPosition.left,
         top: currentPosition.top,
-        zIndex: currentPosition.zIndex,
+        zIndex,
       }}
     >
       {mediaType === 'video' ? (
-        <video className={styles.media} autoPlay loop muted playsInline preload="auto" style={{ width }}>
+        <video className={styles.media} autoPlay loop muted playsInline preload="auto" draggable={false} style={{ width }}>
           <source src={imageSrc} type="video/mp4" />
         </video>
       ) : (
-        <img className={styles.media} src={imageSrc} alt="" style={{ width }} />
+        <img className={styles.media} src={imageSrc} alt="" draggable={false} style={{ width }} />
       )}
     </Window>
   )

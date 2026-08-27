@@ -1,55 +1,57 @@
 import { useState } from 'react'
 import Folder from '../../components/ui/Folder/Folder'
 import TrashBin from '../../components/ui/TrashBin/TrashBin'
+import AboutPage from '../AboutPage/AboutPage'
+import PortfolioPage from '../PortfolioPage/PortfolioPage'
 import styles from './HomePage.module.css'
 
 const desktopFolders = [
     {
         id: 'chiro',
         title: 'chiro.jpg',
-        imageSrc: '/desktopImages/image1.jpg',
+        imageSrc: '/desktop/image1.jpg',
         width: 'clamp(200px, 25vw, 350px)',
         position: { left: '8vw', top: '7vh', zIndex: 1 },
     },
     {
         id: 'fall',
         title: 'fall.jpg',
-        imageSrc: '/desktopImages/image2.jpg',
+        imageSrc: '/desktop/image2.jpg',
         width: 'clamp(170px, 12vw, 350px)',
         position: { left: '45vw', top: '30vh', zIndex: 1 },
     },
     {
         id: 'cheesecake',
         title: 'cheesecake.jpg',
-        imageSrc: '/desktopImages/image3.jpg',
+        imageSrc: '/desktop/image3.jpg',
         width: 'clamp(180px, 12vw, 240px)',
         position: { left: '8vw', top: '50vh', zIndex: 2 },
     },
     {
         id: 'strawberry',
         title: 'strawberry.jpg',
-        imageSrc: '/desktopImages/image4.jpg',
+        imageSrc: '/desktop/image4.jpg',
         width: 'clamp(200px, 17vw, 350px)',
         position: { left: '61vw', top: '50vh', zIndex: 3 },
     },
     {
         id: 'matcha',
         title: 'matcha.jpg',
-        imageSrc: '/desktopImages/image5.jpg',
+        imageSrc: '/desktop/image5.jpg',
         width: 'clamp(200px, 13vw, 350px)',
         position: { left: '75vw', top: '20vh', zIndex: 4 },
     },
     {
         id: 'ariana',
         title: 'ariana.jpg',
-        imageSrc: '/desktopImages/image6.jpg',
+        imageSrc: '/desktop/image6.jpg',
         width: 'clamp(130px, 15vw, 220px)',
         position: { left: '28vw', top: '38vh', zIndex: 5 },
     },
     {
         id: 'video1',
         title: 'video1.mov',
-        imageSrc: '/desktopImages/video1.m4v',
+        imageSrc: '/desktop/video1.m4v',
         mediaType: 'video' as const,
         width: 'clamp(150px, 18vw, 300px)',
         position: { left: '58vw', top: '10vh', zIndex: 6 },
@@ -73,9 +75,7 @@ function HomePage() {
 
     return (
         <main className={styles.home}>
-            <section className={styles.desktop} aria-label="Photo desktop">
-
-
+            <section id="home" className={styles.desktop} aria-label="Photo desktop">
                 {openFolders.map((folder) => (
                     <Folder
                         key={folder.id}
@@ -94,6 +94,8 @@ function HomePage() {
                     onToggle={() => setIsTrashOpen((current) => !current)}
                 />
             </section>
+            <AboutPage />
+            <PortfolioPage />
         </main>
     )
 }

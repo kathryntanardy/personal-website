@@ -7,8 +7,8 @@
   touch-action: none;
   user-select: none;
   transition:
-    box-shadow 180ms ease,
-    transform 180ms ease;
+    box-shadow 240ms ease,
+    transform 240ms ease;
 }
 
 .window:active {
@@ -58,8 +58,8 @@
 
 @media (hover: hover) {
   .window:hover {
-    box-shadow: 0 10px 22px rgb(103 85 77 / 0.18);
-    transform: translateY(-4px) rotate(-1.2deg);
+    box-shadow: 0 16px 28px rgb(103 85 77 / 0.24);
+    transform: translateY(-9px) rotate(-2.4deg) scale(1.025);
   }
 
   .window:hover .header {

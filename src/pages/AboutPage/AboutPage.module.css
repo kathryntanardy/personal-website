@@ -34,7 +34,7 @@
 .copyPanel p {
   max-width: 520px;
   margin: 8px 0 0;
-  font-family: var(--font-inter);
+  font-family: 'Inter', var(--font-system-sans);
   font-size: clamp(0.92rem, 1.3vw, 1rem);
   line-height: 1.25;
 }
@@ -54,11 +54,44 @@
   color: var(--foundation-orange-orange-800);
   font-size: 0.94rem;
   text-decoration: none;
+  transform-origin: center;
+  transition:
+    color 180ms ease,
+    font-weight 180ms ease,
+    transform 180ms ease;
 }
 
 .actions a:hover,
 .actions a:focus-visible {
   color: var(--foundation-orange-orange-900);
+  transform: scale(1.06);
+}
+
+.actions a:not(.primaryAction) {
+  position: relative;
+}
+
+.actions a:not(.primaryAction)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.actions a:not(.primaryAction):hover,
+.actions a:not(.primaryAction):focus-visible {
+  font-weight: 700;
+}
+
+.actions a:not(.primaryAction):hover::after,
+.actions a:not(.primaryAction):focus-visible::after {
+  transform: scaleX(1);
 }
 
 .primaryAction {
@@ -79,15 +112,15 @@
 .portraitArea {
   position: relative;
   justify-self: center;
-  width: min(100%, 360px);
-  aspect-ratio: 1;
+  width: min(100%, 380px);
+  height: clamp(390px, 36vw, 480px);
 }
 
 .portraitButton {
-  width: min(75vw, 260px);
-  aspect-ratio: 1;
+  width: clamp(250px, 23vw, 320px);
+  height: clamp(360px, 34vw, 460px);
   position: absolute;
-  top: 42px;
+  top: 50%;
   left: 50%;
   z-index: 2;
   padding: 0;
@@ -95,7 +128,7 @@
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .portraitFrame {
@@ -137,21 +170,12 @@
   outline-offset: 8px;
 }
 
-.tapLabel,
 .sparkle,
 .flower,
-.scribble,
-.revealNote {
+.scribble {
   position: absolute;
   pointer-events: none;
   user-select: none;
-}
-
-.tapLabel {
-  width: 82px;
-  top: 30px;
-  left: 18px;
-  z-index: 3;
 }
 
 .sparkle {
@@ -175,13 +199,6 @@
   z-index: 1;
 }
 
-.revealNote {
-  width: 108px;
-  right: 18px;
-  bottom: 26px;
-  z-index: 5;
-}
-
 @media (max-width: 560px) {
   .about {
     min-height: calc(100svh - 64px);
@@ -203,11 +220,19 @@
   }
 
   .portraitArea {
-    width: min(100%, 330px);
+    width: min(100%, 300px);
+    height: 390px;
+  }
+
+  .portraitButton {
+    width: min(72vw, 260px);
+    height: min(104vw, 380px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .actions a,
+  .actions a:not(.primaryAction)::after,
   .portraitFrame img {
     transition: none;
   }

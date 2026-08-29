@@ -23,7 +23,7 @@ function AboutPage() {
             <br /> <br />
             In my free time, you’ll probably find me watching TV series, listening to music,
             touching grass, or connecting with new people. I also love exploring new foods in town 😋.
-            I’m a huge believer that consistent ard work leads to growth, and that every action,
+            I’m a huge believer that consistent hard work leads to growth, and that every action,
             win or lose, is a chance to learn and improve. It’s a mindset I try to carry with me
             every day.
           </p>
@@ -38,7 +38,6 @@ function AboutPage() {
         </div>
 
         <div className={styles.portraitArea}>
-          <img className={styles.tapLabel} src="/about/taptoreveal.svg" alt="" aria-hidden="true" />
           <img className={styles.sparkle} src="/about/random.svg" alt="" aria-hidden="true" />
           <img className={styles.flower} src="/about/flower.svg" alt="" aria-hidden="true" />
           <img className={styles.scribble} src="/about/blink.svg" alt="" aria-hidden="true" />
@@ -57,10 +56,6 @@ function AboutPage() {
               />
             </span>
           </button>
-
-          {isRevealed ? (
-            <img className={styles.revealNote} src="/about/hichiro.svg" alt="" aria-hidden="true" />
-          ) : null}
         </div>
       </div>
     </section>

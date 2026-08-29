@@ -2,6 +2,7 @@
   width: min(100%, 1040px);
   margin-top: clamp(42px, 8vh, 72px);
   color: var(--foundation-orange-orange-900);
+  animation: sectionEnter 260ms ease-out both;
 }
 
 .item {
@@ -48,6 +49,18 @@
   font-style: normal;
 }
 
+@keyframes sectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 720px) {
   .experience {
     margin-top: 32px;
@@ -61,5 +74,11 @@
 
   .duration {
     white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience {
+    animation: none;
   }
 }

@@ -6,6 +6,19 @@
   align-items: stretch;
   gap: clamp(20px, 3.5vw, 34px);
   margin-top: clamp(24px, 4vh, 38px);
+  animation: sectionEnter 260ms ease-out both;
+}
+
+@keyframes sectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 820px) {
@@ -13,5 +26,11 @@
     grid-template-columns: 1fr;
     gap: 24px;
     margin-top: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .techStack {
+    animation: none;
   }
 }

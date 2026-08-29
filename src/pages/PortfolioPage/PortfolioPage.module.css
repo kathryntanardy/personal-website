@@ -4,7 +4,6 @@
   align-items: start;
   padding: 64px 32px;
   background: var(--color-background);
-  scroll-margin-top: 72px;
 }
 
 .inner {
@@ -34,6 +33,5 @@
   .portfolio {
     min-height: calc(100svh - 64px);
     padding: 48px 20px;
-    scroll-margin-top: 64px;
   }
 }

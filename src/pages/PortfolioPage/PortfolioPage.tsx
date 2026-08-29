@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Experience from '../../components/Experience/Experience'
 import Slider from '../../components/Slider/Slider'
 import type { SliderOption } from '../../components/Slider/Slider'
+import TechStack from '../../components/TechStack/TechStack'
 import styles from './PortfolioPage.module.css'
 
 function PortfolioPage() {
@@ -15,6 +16,7 @@ function PortfolioPage() {
 
         <div className={styles.content} role="tabpanel">
           {selectedSection === 'experience' ? <Experience /> : null}
+          {selectedSection === 'tech stack' ? <TechStack /> : null}
         </div>
       </div>
     </section>

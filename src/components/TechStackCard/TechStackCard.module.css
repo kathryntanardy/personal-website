@@ -1,0 +1,61 @@
+.card {
+  height: 100%;
+  min-height: 160px;
+  padding: 24px 28px;
+  border: 2px solid var(--foundation-orange-orange-600);
+  border-radius: 10px;
+  background: var(--foundation-orange-orange-200);
+  box-shadow: 18px 22px 30px rgb(103 85 77 / 0.16);
+  color: var(--foundation-orange-orange-900);
+}
+
+.card h3 {
+  margin: 0 0 14px;
+  color: var(--foundation-orange-orange-900);
+  font-family: var(--font-h3);
+  font-size: clamp(1.05rem, 1.6vw, 1.38rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1.5px solid #ffdac9;
+  border-radius: 10px;
+  color: #111111;
+  font-family: 'Kannada MN', 'Kannada Sangam MN', var(--font-system-sans);
+  font-size: clamp(0.64rem, 0.85vw, 0.78rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+@media (max-width: 720px) {
+  .card {
+    min-height: 0;
+    padding: 22px 22px;
+  }
+
+  .tags {
+    gap: 9px;
+  }
+
+  .tags li {
+    min-height: 30px;
+    padding: 0 12px;
+  }
+}

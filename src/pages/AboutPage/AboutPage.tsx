@@ -29,7 +29,10 @@ function AboutPage() {
           </p>
 
           <div className={styles.actions}>
-            <a className={styles.primaryAction} href="mailto:ktanardy@gmail.com?subject=CV request">
+            <a className={styles.primaryAction}
+              href="/Kathryn_Resume.pdf"
+              target="_blank"
+              rel="noreferrer">
               View CV
             </a>
             <a href="https://github.com/kathryntanardy">GitHub</a>

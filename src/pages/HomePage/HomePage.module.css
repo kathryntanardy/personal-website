@@ -17,6 +17,13 @@
   scroll-margin-top: 72px;
 }
 
+.chatBoxLayer {
+  position: absolute;
+  top: clamp(72px, 12vh, 120px);
+  right: clamp(24px, 4.8vw, 72px);
+  z-index: 12;
+}
+
 .desktop::after {
   content: "";
   position: absolute;
@@ -48,6 +55,13 @@
     justify-items: center;
     padding: 0 20px 24px;
     scroll-margin-top: 64px;
+  }
+
+  .chatBoxLayer {
+    position: static;
+    z-index: auto;
+    order: 1;
+    margin-top: 24px;
   }
 
   .pageLabel {

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ChatBox from '../../components/ui/ChatBox/ChatBox'
 import Folder from '../../components/ui/Folder/Folder'
 import TrashBin from '../../components/ui/TrashBin/TrashBin'
 import AboutPage from '../AboutPage/AboutPage'
@@ -10,51 +11,44 @@ const desktopFolders = [
         id: 'chiro',
         title: 'chiro.jpg',
         imageSrc: '/desktop/image1.jpg',
-        width: 'clamp(200px, 25vw, 350px)',
-        position: { left: '8vw', top: '7vh', zIndex: 1 },
-    },
-    {
-        id: 'fall',
-        title: 'fall.jpg',
-        imageSrc: '/desktop/image2.jpg',
-        width: 'clamp(170px, 12vw, 350px)',
-        position: { left: '45vw', top: '30vh', zIndex: 1 },
+        width: 'clamp(220px, 20vw, 330px)',
+        position: { left: '6vw', top: '10vh', zIndex: 5 },
     },
     {
         id: 'cheesecake',
         title: 'cheesecake.jpg',
         imageSrc: '/desktop/image3.jpg',
-        width: 'clamp(180px, 12vw, 240px)',
-        position: { left: '8vw', top: '50vh', zIndex: 2 },
+        width: 'clamp(155px, 14vw, 250px)',
+        position: { left: '5vw', top: '52vh', zIndex: 4 },
     },
     {
         id: 'strawberry',
         title: 'strawberry.jpg',
         imageSrc: '/desktop/image4.jpg',
-        width: 'clamp(200px, 17vw, 350px)',
-        position: { left: '61vw', top: '50vh', zIndex: 3 },
+        width: 'clamp(190px, 18vw, 320px)',
+        position: { left: 'min(41vw, calc(100vw - 650px))', top: '49vh', zIndex: 3 },
     },
     {
         id: 'matcha',
         title: 'matcha.jpg',
         imageSrc: '/desktop/image5.jpg',
-        width: 'clamp(200px, 13vw, 350px)',
-        position: { left: '75vw', top: '20vh', zIndex: 4 },
+        width: 'clamp(200px, 18vw, 300px)',
+        position: { left: 'min(48vw, calc(100vw - 650px))', top: '17vh', zIndex: 2 },
     },
     {
         id: 'ariana',
         title: 'ariana.jpg',
         imageSrc: '/desktop/image6.jpg',
-        width: 'clamp(130px, 15vw, 220px)',
-        position: { left: '28vw', top: '38vh', zIndex: 5 },
+        width: 'clamp(110px, 12vw, 175px)',
+        position: { left: '22vw', top: '37vh', zIndex: 7 },
     },
     {
         id: 'video1',
         title: 'video1.mov',
         imageSrc: '/desktop/video1.m4v',
         mediaType: 'video' as const,
-        width: 'clamp(150px, 18vw, 300px)',
-        position: { left: '58vw', top: '10vh', zIndex: 6 },
+        width: 'clamp(145px, 17vw, 285px)',
+        position: { left: '30vw', top: '10vh', zIndex: 1 },
     },
 ]
 
@@ -95,6 +89,10 @@ function HomePage() {
     return (
         <main className={styles.home}>
             <section id="home" className={styles.desktop} aria-label="Photo desktop">
+                <div className={styles.chatBoxLayer}>
+                    <ChatBox />
+                </div>
+
                 {openFolders.map((folder) => (
                     <Folder
                         key={folder.id}

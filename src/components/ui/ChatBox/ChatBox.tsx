@@ -54,7 +54,6 @@ function ChatBox() {
             key={index}
             aria-hidden={index >= visibleMessageCount}
           >
-            <img className={styles.bubbleImage} src="/desktop/bubble.png" alt="" aria-hidden="true" />
             <span className={styles.messageText}>{message}</span>
           </p>
         ))}

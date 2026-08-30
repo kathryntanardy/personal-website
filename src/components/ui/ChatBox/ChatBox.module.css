@@ -21,19 +21,43 @@
 
 .message {
   position: relative;
-  isolation: isolate;
-  width: 90%;
-  aspect-ratio: 1083 / 205;
+  width: min(94%, 372px);
+  min-height: clamp(38px, 3.7vw, 48px);
   margin: 0;
+  padding: clamp(8px, 0.8vw, 10px) clamp(28px, 2.8vw, 42px) clamp(8px, 0.8vw, 10px) clamp(18px, 2vw, 28px);
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--foundation-orange-orange-500);
+  box-shadow:
+    0 4px 7px rgb(103 85 77 / 0.12),
+    0 13px 20px rgb(103 85 77 / 0.09);
   color: #8B5347;
   font-size: clamp(0.9rem, 1.06vw, 1.06rem);
   line-height: 1.25;
-  justify-self: end;
+  justify-self: center;
   transform: translateY(8px) scale(0.98);
   opacity: 0;
   transition:
     opacity 360ms ease,
     transform 360ms ease;
+}
+
+.message::before {
+  content: "";
+  position: absolute;
+  right: clamp(8px, 0.95vw, 14px);
+  bottom: clamp(-8px, -0.8vw, -6px);
+  width: clamp(16px, 1.8vw, 24px);
+  height: clamp(16px, 1.8vw, 24px);
+  background: var(--foundation-orange-orange-500);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  transform: rotate(-60deg);
+  transform-origin: center;
+}
+
+.message::after {
+  content: none;
 }
 
 .messageVisible {
@@ -45,43 +69,10 @@
   pointer-events: none;
 }
 
-.bubbleImage {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  pointer-events: none;
-  filter:
-    drop-shadow(0 4px 7px rgb(103 85 77 / 0.12))
-    drop-shadow(0 13px 20px rgb(103 85 77 / 0.09));
-}
-
-.message::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgb(149 76 58 / 0) 54%, rgb(149 76 58 / 0.12) 100%);
-  mask-image: url("/desktop/bubble.png");
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
-  -webkit-mask-image: url("/desktop/bubble.png");
-  -webkit-mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-}
-
 .messageText {
-  position: absolute;
-  top: 42%;
-  right: 42px;
-  left: 28px;
-  z-index: 2;
+  position: relative;
+  z-index: 1;
   display: block;
-  max-width: calc(100% - 70px);
-  transform: translateY(-50%);
   text-align: left;
 }
 
@@ -123,6 +114,7 @@
 }
 
 @keyframes typingPulse {
+
   0%,
   100% {
     opacity: 0.34;
@@ -146,20 +138,14 @@
 
 @media (max-width: 560px) {
   .chatBox {
-    width: min(100%, 340px);
+    width: min(94%, 326px);
     gap: 18px;
   }
 
   .message {
-    min-height: 46px;
+    width: min(100%, 340px);
+    min-height: 38px;
     font-size: 0.86rem;
-  }
-
-  .messageText {
-    top: 42%;
-    right: 32px;
-    left: 20px;
-    max-width: calc(100% - 52px);
   }
 }
 

@@ -28,7 +28,21 @@
   color: #8B5347;
   font-size: clamp(0.9rem, 1.06vw, 1.06rem);
   line-height: 1.25;
-  justify-self: start;
+  justify-self: end;
+  transform: translateY(8px) scale(0.98);
+  opacity: 0;
+  transition:
+    opacity 360ms ease,
+    transform 360ms ease;
+}
+
+.messageVisible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.messageHidden {
+  pointer-events: none;
 }
 
 .bubbleImage {
@@ -66,6 +80,7 @@
   left: 28px;
   z-index: 2;
   display: block;
+  max-width: calc(100% - 70px);
   transform: translateY(-50%);
   text-align: left;
 }
@@ -87,6 +102,37 @@
   border-radius: 50%;
   background: var(--foundation-orange-orange-800);
   opacity: 0.74;
+}
+
+.typingLoading span {
+  animation: typingPulse 1200ms ease-in-out infinite;
+}
+
+.typingLoading span:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.typingLoading span:nth-child(3) {
+  animation-delay: 400ms;
+}
+
+.typingComplete span {
+  animation: none;
+  opacity: 0.74;
+  transform: translateY(0);
+}
+
+@keyframes typingPulse {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: translateY(-4px);
+  }
 }
 
 @media (max-width: 980px) {
@@ -113,5 +159,17 @@
     top: 42%;
     right: 32px;
     left: 20px;
+    max-width: calc(100% - 52px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message {
+    transform: none;
+    transition: none;
+  }
+
+  .typingLoading span {
+    animation: none;
   }
 }

@@ -1,65 +1,160 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './AboutPage.module.css'
 
-const profileImages = {
-  default: '/about/profile.jpg',
-  revealed: '/about/chiro.jpg',
+const githubUsername = import.meta.env.VITE_GITHUB_USERNAME || 'kathryntanardy'
+const githubGraphEndpoint = import.meta.env.VITE_GITHUB_ACTIVITY_ENDPOINT || '/api/github-contribution'
+
+type ContributionDay = {
+  date: string
+  contributionCount: number
+}
+
+type ContributionCalendar = {
+  totalContributions: number
+  weeks: { contributionDays: ContributionDay[] }[]
+}
+
+const monthFormatter = new Intl.DateTimeFormat('en-US', { month: 'short' })
+const dayFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' })
+
+function getLevel(count: number) {
+  if (count === 0) return 0
+  if (count === 1) return 1
+  if (count <= 3) return 2
+  if (count <= 6) return 3
+  return 4
+}
+
+function getMonthLabels(weeks: ContributionCalendar['weeks']) {
+  const seenMonths = new Set<string>()
+
+  return weeks.flatMap((week, index) => {
+    const firstOfMonth = week.contributionDays.find(
+      (day) => new Date(`${day.date}T00:00:00`).getDate() === 1,
+    )
+
+    if (!firstOfMonth) return []
+
+    const date = new Date(`${firstOfMonth.date}T00:00:00`)
+    const monthKey = `${date.getFullYear()}-${date.getMonth()}`
+
+    if (seenMonths.has(monthKey)) return []
+
+    seenMonths.add(monthKey)
+    return [{ label: monthFormatter.format(date), index }]
+  })
+}
+
+function GitHubGraph() {
+  const [calendar, setCalendar] = useState<ContributionCalendar | null>(null)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    async function loadCalendar() {
+      try {
+        const response = await fetch(githubGraphEndpoint, { signal: controller.signal })
+        if (response.ok) {
+          setCalendar((await response.json()) as ContributionCalendar)
+        }
+      } catch (error) {
+        if (!(error instanceof DOMException && error.name === 'AbortError')) {
+          setCalendar(null)
+        }
+      }
+    }
+
+    loadCalendar()
+    return () => controller.abort()
+  }, [])
+
+  if (!calendar) return null
+
+  const monthLabels = getMonthLabels(calendar.weeks)
+
+  return (
+    <section
+      className={styles.githubPanel}
+      aria-label={`${calendar.totalContributions} GitHub contributions in the last year`}
+    >
+      <div className={styles.githubGridWrap}>
+        <div className={styles.monthLabels} aria-hidden="true">
+          {monthLabels.map((month) => (
+            <span key={month.label} style={{ gridColumn: `${month.index + 1} / span 4` }}>
+              {month.label}
+            </span>
+          ))}
+        </div>
+
+        <div className={styles.activityGrid} aria-label="GitHub contributions over the last year">
+          {calendar.weeks.map((week) => (
+            <div className={styles.activityWeek} key={week.contributionDays[0]?.date}>
+              {week.contributionDays.map((day) => (
+                <span
+                  className={styles.activityDay}
+                  data-level={getLevel(day.contributionCount)}
+                  key={day.date}
+                  title={`${day.contributionCount} contribution${
+                    day.contributionCount === 1 ? '' : 's'
+                  } on ${dayFormatter.format(new Date(`${day.date}T00:00:00`))}`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
 
 function AboutPage() {
-  const [isRevealed, setIsRevealed] = useState(false)
-
   return (
     <section className={styles.about} id="about" aria-labelledby="about-title">
       <div className={styles.inner}>
         <div className={styles.copyPanel}>
-          <h2 id="about-title">Hi, I’m Kathryn Tanardy</h2>
+          <h2 id="about-title">Hi, I’m Kathryn!</h2>
           <p>
-            Hi! I’m Kathryn, a 5th-year Computer Science student at SFU 👋 I’m passionate about
-            full-stack development, project management, and building things that make a real impact.
-            I love turning ideas into something useful, working with people, and learning along
-            the way.
-
-            <br /> <br />
-            In my free time, you’ll probably find me watching TV series, listening to music,
-            touching grass, or connecting with new people. I also love exploring new foods in town 😋.
-            I’m a huge believer that consistent hard work leads to growth, and that every action,
-            win or lose, is a chance to learn and improve. It’s a mindset I try to carry with me
-            every day.
+            A fifth-year Computer Science student at SFU who loves building things
+            that make people’s lives a little easier, including my own! What excites me most about
+            building is the endless possibility of turning a simple idea into something useful and
+            impactful.
           </p>
-
-          <div className={styles.actions}>
-            <a className={styles.primaryAction}
-              href="/Kathryn_Resume.pdf"
-              target="_blank"
-              rel="noreferrer">
-              View CV
-            </a>
-            <a href="https://github.com/kathryntanardy">GitHub</a>
-            <a href="https://www.linkedin.com/in/kathryntanardy">LinkedIn</a>
-          </div>
+          <p>
+            Outside of tech, I enjoy watching TV series, listening to music, touching grass, and
+            meeting new people. I try my best to work hard, make the most of every opportunity, and
+            live life to the fullest every day. I hope to keep creating things I love and enjoy the
+            journey along the way ✨
+          </p>
         </div>
 
-        <div className={styles.portraitArea}>
-          <img className={styles.sparkle} src="/about/random.svg" alt="" aria-hidden="true" />
-          <img className={styles.flower} src="/about/flower.svg" alt="" aria-hidden="true" />
-          <img className={styles.scribble} src="/about/blink.svg" alt="" aria-hidden="true" />
-
-          <button
-            className={styles.portraitButton}
-            type="button"
-            onClick={() => setIsRevealed((current) => !current)}
-            aria-label="Reveal alternate about photo"
-            aria-pressed={isRevealed}
+        <div className={styles.actions}>
+          <a
+            className={styles.primaryAction}
+            href="/Kathryn_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
           >
-            <span className={styles.portraitFrame}>
-              <img
-                src={isRevealed ? profileImages.revealed : profileImages.default}
-                alt="Kathryn Tanardy"
-              />
-            </span>
-          </button>
+            View CV
+          </a>
+          <a
+            className={styles.socialAction}
+            href={`https://github.com/${githubUsername}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+          <a
+            className={styles.socialAction}
+            href="https://www.linkedin.com/in/kathryntanardy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
         </div>
+
+        <GitHubGraph />
       </div>
     </section>
   )

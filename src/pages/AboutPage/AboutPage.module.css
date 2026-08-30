@@ -1,82 +1,105 @@
 .about {
   min-height: calc(100svh - 72px);
-  display: grid;
-  align-items: center;
-  padding: 72px 32px;
+  padding: clamp(24px, 3.2vw, 38px) 32px;
   background: var(--color-background);
   scroll-margin-top: 72px;
 }
 
 .inner {
-  width: min(100%, 1140px);
+  width: min(100%, 1280px);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(440px, 1fr) minmax(300px, 420px);
-  align-items: center;
-  gap: clamp(36px, 6vw, 72px);
+  gap: clamp(18px, 2.2vw, 26px);
 }
 
 .copyPanel {
-  padding: clamp(36px, 5vw, 54px) clamp(34px, 5vw, 50px);
-  border: 2px solid var(--foundation-orange-orange-900);
-  color: var(--foundation-orange-orange-900);
+  padding: clamp(20px, 2.2vw, 28px) clamp(26px, 3.4vw, 46px);
+  border: 3px solid var(--foundation-orange-orange-900);
+  border-radius: 16px;
+  background: var(--foundation-orange-orange-50);
+  color: #8B5347;
 }
 
 .about h2 {
-  margin: 0;
-  color: var(--color-text-strong);
+  margin: 0 0 16px;
+  color: #8B5347;
   font-family: var(--font-h1);
-  font-size: clamp(2.2rem, 2vw, 3.15rem);
+  font-size: clamp(1.8rem, 2.55vw, 2.75rem);
   font-weight: 400;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .copyPanel p {
-  max-width: 520px;
-  margin: 8px 0 0;
-  font-family: 'Inter', var(--font-system-sans);
-  font-size: clamp(0.92rem, 1.3vw, 1rem);
-  line-height: 1.25;
+  margin: 0;
+  color: #8B5347;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
+  font-size: clamp(1.12rem, 1.36vw, 1.36rem);
+  font-weight: 400;
+  line-height: 1.32;
+}
+
+.copyPanel p + p {
+  margin-top: 24px;
 }
 
 .actions {
-  display: flex;
+  width: fit-content;
+  justify-self: end;
+  display: grid;
+  grid-template-columns: auto auto auto;
   align-items: center;
-  flex-wrap: wrap;
-  gap: clamp(24px, 4vw, 52px);
-  margin-top: 30px;
+  gap: clamp(14px, 1.8vw, 24px);
+  padding-right: clamp(0px, 1vw, 18px);
 }
 
 .actions a {
-  min-height: 36px;
+  min-height: 34px;
   display: inline-flex;
   align-items: center;
-  color: var(--foundation-orange-orange-800);
-  font-size: 0.94rem;
+  justify-content: center;
+  color: #8B5347;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
+  font-size: clamp(0.98rem, 1.18vw, 1.18rem);
   text-decoration: none;
   transform-origin: center;
   transition:
     color 180ms ease,
-    font-weight 180ms ease,
     transform 180ms ease;
 }
 
 .actions a:hover,
 .actions a:focus-visible {
   color: var(--foundation-orange-orange-900);
-  transform: scale(1.06);
+  transform: translateY(-2px);
 }
 
-.actions a:not(.primaryAction) {
+.primaryAction {
+  min-width: 92px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--foundation-orange-orange-800);
+  box-shadow: 0 4px 7px rgb(103 85 77 / 0.24);
+  color: var(--foundation-white-white-50) !important;
+}
+
+.primaryAction:hover,
+.primaryAction:focus-visible {
+  background: var(--foundation-orange-orange-900);
+}
+
+.socialAction {
   position: relative;
+  width: fit-content;
+  justify-self: center;
+  text-shadow: 0 0 0 transparent;
 }
 
-.actions a:not(.primaryAction)::after {
+.socialAction::after {
   content: "";
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: 4px;
+  width: 100%;
+  bottom: 2px;
   height: 2px;
   background: currentColor;
   transform: scaleX(0);
@@ -84,156 +107,117 @@
   transition: transform 180ms ease;
 }
 
-.actions a:not(.primaryAction):hover,
-.actions a:not(.primaryAction):focus-visible {
-  font-weight: 700;
+.socialAction:hover,
+.socialAction:focus-visible {
+  text-shadow: 0.35px 0 currentColor, -0.35px 0 currentColor;
 }
 
-.actions a:not(.primaryAction):hover::after,
-.actions a:not(.primaryAction):focus-visible::after {
+.socialAction:hover::after,
+.socialAction:focus-visible::after {
   transform: scaleX(1);
 }
 
-.primaryAction {
-  min-width: 116px;
-  justify-content: center;
-  padding: 0 24px;
-  border-radius: 5px;
-  background: var(--foundation-orange-orange-900);
-  box-shadow: 0 4px 6px rgb(103 85 77 / 0.24);
-  color: var(--foundation-white-white-50) !important;
+.githubPanel {
+  padding: clamp(4px, 1vw, 12px) 0 0;
+  color: #8B5347;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
 }
 
-.primaryAction:hover,
-.primaryAction:focus-visible {
-  background: var(--foundation-orange-orange-800);
-}
-
-.portraitArea {
-  position: relative;
-  justify-self: center;
-  width: min(100%, 380px);
-  height: clamp(390px, 36vw, 480px);
-}
-
-.portraitButton {
-  width: clamp(250px, 23vw, 320px);
-  height: clamp(360px, 34vw, 460px);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  transform: translate(-50%, -50%);
-}
-
-.portraitFrame {
-  position: relative;
+.githubGridWrap {
   width: 100%;
-  height: 100%;
-  display: block;
-  overflow: hidden;
-  border-radius: 50%;
+  overflow-x: auto;
+  padding: 2px 0 4px;
 }
 
-.portraitFrame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  box-shadow:
-    inset 0 16px 28px rgb(103 85 77 / 0.24),
-    inset 0 -18px 30px rgb(103 85 77 / 0.26);
-  pointer-events: none;
+.monthLabels {
+  display: grid;
+  grid-template-columns: repeat(53, 10px);
+  gap: 4px;
+  min-width: 738px;
+  margin: 0 0 6px;
+  color: var(--foundation-orange-orange-800);
+  font-size: 0.68rem;
 }
 
-.portraitFrame img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center 58%;
-  transition: transform 220ms ease;
+.monthLabels span {
+  min-width: 0;
+  white-space: nowrap;
 }
 
-.portraitButton:hover .portraitFrame img,
-.portraitButton:focus-visible .portraitFrame img {
-  transform: scale(1.04);
+.activityGrid {
+  display: flex;
+  gap: 4px;
+  min-width: 738px;
 }
 
-.portraitButton:focus-visible {
-  outline: 2px solid var(--foundation-orange-orange-500);
-  outline-offset: 8px;
+.activityWeek {
+  display: grid;
+  grid-template-rows: repeat(7, 10px);
+  gap: 4px;
 }
 
-.sparkle,
-.flower,
-.scribble {
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
+.activityDay {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgb(103 85 77 / 0.08);
+  border-radius: 3px;
+  background: var(--foundation-orange-orange-100);
 }
 
-.sparkle {
-  width: 54px;
-  top: 28px;
-  right: 14px;
-  z-index: 1;
+.activityDay[data-level="1"] {
+  background: #F7C9BA;
 }
 
-.flower {
-  width: 68px;
-  right: 8px;
-  bottom: 78px;
-  z-index: 4;
+.activityDay[data-level="2"] {
+  background: #ECA58E;
 }
 
-.scribble {
-  width: 88px;
-  bottom: 34px;
-  left: 18px;
-  z-index: 1;
+.activityDay[data-level="3"] {
+  background: #C97963;
+}
+
+.activityDay[data-level="4"] {
+  background: #8B5347;
+}
+
+@media (max-width: 900px) {
+  .actions {
+    width: 100%;
+    justify-self: center;
+    gap: 22px;
+  }
 }
 
 @media (max-width: 560px) {
   .about {
     min-height: calc(100svh - 64px);
-    padding: 72px 20px;
+    padding: 32px 20px;
     scroll-margin-top: 64px;
   }
 
-  .inner {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
   .copyPanel {
-    padding: 34px 24px;
+    border-width: 2px;
+    border-radius: 14px;
   }
 
   .actions {
-    gap: 18px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
   }
 
-  .portraitArea {
-    width: min(100%, 300px);
-    height: 390px;
+  .actions a {
+    font-size: 0.98rem;
   }
 
-  .portraitButton {
-    width: min(72vw, 260px);
-    height: min(104vw, 380px);
+  .primaryAction {
+    min-width: 92px;
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .actions a,
-  .actions a:not(.primaryAction)::after,
-  .portraitFrame img {
+  .actions a {
     transition: none;
   }
 }

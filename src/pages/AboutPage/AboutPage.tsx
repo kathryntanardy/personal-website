@@ -4,6 +4,14 @@ import styles from './AboutPage.module.css'
 const githubUsername = import.meta.env.VITE_GITHUB_USERNAME || 'kathryntanardy'
 const githubGraphEndpoint = import.meta.env.VITE_GITHUB_ACTIVITY_ENDPOINT || '/api/github-contribution'
 
+const aboutNotes = [
+  '👾 currently building — hacker portal, CSSS Kiosk',
+  '🔭 want to build tools people actually open twice',
+  '🐶 pet tax — one very cute dog named Chiro',
+  "🥞 lately — trying every salt bread in Metro Vancouver",
+  '🌎 based in Vancouver, open to new grad roles',
+]
+
 type ContributionDay = {
   date: string
   contributionCount: number
@@ -154,7 +162,15 @@ function AboutPage() {
           </a>
         </div>
 
-        <GitHubGraph />
+        <div className={styles.githubActivityRow}>
+          <GitHubGraph />
+
+          <ul className={styles.aboutNotes} aria-label="About Kathryn notes">
+            {aboutNotes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )

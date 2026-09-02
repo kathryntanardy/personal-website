@@ -13,7 +13,7 @@
   margin: 0 0 14px;
   color: var(--foundation-orange-orange-900);
   font-family: var(--font-h3);
-  font-size: clamp(1.05rem, 1.6vw, 1.38rem);
+  font-size: clamp(0.95rem, 1.35vw, 1.2rem);
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.05;

@@ -36,7 +36,7 @@
 .copyPanel p {
   margin: 0;
   color: #8B5347;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
+  font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
   font-size: clamp(1.12rem, 1.36vw, 1.36rem);
   font-weight: 400;
   line-height: 1.32;
@@ -121,13 +121,27 @@
   transform: scaleX(1);
 }
 
+.githubActivityRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: clamp(14px, 2vw, 28px);
+  margin-top: clamp(26px, 4vw, 56px);
+}
+
 .githubPanel {
-  padding: clamp(4px, 1vw, 12px) 0 0;
+  min-width: 0;
+  padding: 0;
   color: #8B5347;
   font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
 }
 
 .githubGridWrap {
+  --github-cell-size: clamp(5px, 0.78vw, 12px);
+  --github-gap: clamp(1.5px, 0.2vw, 3px);
+  --github-label-size: clamp(0.56rem, 0.58vw, 0.78rem);
+
   width: 100%;
   overflow-x: auto;
   padding: 2px 0 4px;
@@ -135,12 +149,12 @@
 
 .monthLabels {
   display: grid;
-  grid-template-columns: repeat(53, 10px);
-  gap: 4px;
-  min-width: 738px;
+  grid-template-columns: repeat(53, var(--github-cell-size));
+  gap: var(--github-gap);
+  width: max-content;
   margin: 0 0 6px;
   color: var(--foundation-orange-orange-800);
-  font-size: 0.68rem;
+  font-size: var(--github-label-size);
 }
 
 .monthLabels span {
@@ -150,21 +164,21 @@
 
 .activityGrid {
   display: flex;
-  gap: 4px;
-  min-width: 738px;
+  gap: var(--github-gap);
+  width: max-content;
 }
 
 .activityWeek {
   display: grid;
-  grid-template-rows: repeat(7, 10px);
-  gap: 4px;
+  grid-template-rows: repeat(7, var(--github-cell-size));
+  gap: var(--github-gap);
 }
 
 .activityDay {
-  width: 10px;
-  height: 10px;
+  width: var(--github-cell-size);
+  height: var(--github-cell-size);
   border: 1px solid rgb(103 85 77 / 0.08);
-  border-radius: 3px;
+  border-radius: max(2px, calc(var(--github-cell-size) * 0.3));
   background: var(--foundation-orange-orange-100);
 }
 
@@ -184,11 +198,35 @@
   background: #8B5347;
 }
 
+.aboutNotes {
+  display: grid;
+  gap: clamp(10px, 1.2vw, 16px);
+  margin: 0;
+  padding: 0;
+  color: #8B5347;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
+  font-size: clamp(0.92rem, 1.08vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.18;
+  list-style: none;
+  white-space: nowrap;
+}
+
 @media (max-width: 900px) {
   .actions {
     width: 100%;
     justify-self: center;
     gap: 22px;
+  }
+
+  .githubActivityRow {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .aboutNotes {
+    white-space: normal;
   }
 }
 

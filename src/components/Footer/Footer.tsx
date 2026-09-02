@@ -1,11 +1,12 @@
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
+import { Link } from 'react-router'
 import styles from './Footer.module.css'
 
 const footerLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Work', to: '/work' },
+  { label: 'About', to: '/about' },
+  { label: 'Portfolio', to: '/portfolio' },
 ]
 
 const socialLinks = [
@@ -19,17 +20,17 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brandGroup}>
-          <a className={styles.brand} href="#home">
+          <Link className={styles.brand} to="/work">
             Kathryn Tanardy
-          </a>
+          </Link>
           <p className={styles.description}>Thank you for stopping by ♡</p>
         </div>
 
         <nav className={styles.footerNav} aria-label="Footer navigation">
           {footerLinks.map((link) => (
-            <a href={link.href} key={link.href}>
+            <Link to={link.to} key={link.to}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

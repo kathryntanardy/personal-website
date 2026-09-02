@@ -1,10 +1,4 @@
-.home {
-  min-height: 100svh;
-  padding: 0;
-  background-color: var(--color-background);
-}
-
-.desktop {
+.playground {
   width: 100%;
   min-height: calc(100svh - 72px);
   position: relative;
@@ -14,7 +8,6 @@
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 30px 30px;
-  scroll-margin-top: 72px;
 }
 
 .chatBoxLayer {
@@ -24,7 +17,7 @@
   z-index: 12;
 }
 
-.desktop::after {
+.playground::after {
   content: "";
   position: absolute;
   right: 0;
@@ -39,22 +32,13 @@
   );
 }
 
-.pageLabel {
-  margin: 0;
-  padding: 8px 0 0 10px;
-  color: var(--foundation-white-white-700);
-  font-size: 0.72rem;
-  line-height: 1;
-}
-
 @media (max-width: 560px) {
-  .desktop {
+  .playground {
     min-height: calc(100svh - 64px);
     display: grid;
     gap: 18px;
     justify-items: center;
     padding: 0 20px 24px;
-    scroll-margin-top: 64px;
   }
 
   .chatBoxLayer {
@@ -62,9 +46,5 @@
     z-index: auto;
     order: 1;
     margin-top: 24px;
-  }
-
-  .pageLabel {
-    justify-self: start;
   }
 }

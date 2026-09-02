@@ -44,6 +44,10 @@
     color: var(--color-text-strong);
 }
 
+.activeLink {
+    color: var(--foundation-orange-orange-900);
+}
+
 @media (max-width: 560px) {
     .nav {
         min-height: 64px;

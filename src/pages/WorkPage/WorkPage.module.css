@@ -1,0 +1,19 @@
+.work {
+  width: 100%;
+  min-height: calc(100svh - 72px);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 30px 30px;
+  scroll-margin-top: 72px;
+}
+
+@media (max-width: 560px) {
+  .work {
+    min-height: calc(100svh - 64px);
+    scroll-margin-top: 64px;
+  }
+}

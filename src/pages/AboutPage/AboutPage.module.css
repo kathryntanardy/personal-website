@@ -1,8 +1,12 @@
 .about {
+  background: var(--color-background);
+  scroll-margin-top: 72px;
+}
+
+.aboutContent {
   min-height: calc(100svh - 72px);
   padding: clamp(24px, 3.2vw, 38px) 32px;
   background: var(--color-background);
-  scroll-margin-top: 72px;
 }
 
 .inner {
@@ -24,7 +28,7 @@
   color: #8B5347;
 }
 
-.about h2 {
+.aboutContent h2 {
   margin: 0 0 16px;
   color: #8B5347;
   font-family: var(--font-h1);
@@ -232,9 +236,12 @@
 
 @media (max-width: 560px) {
   .about {
+    scroll-margin-top: 64px;
+  }
+
+  .aboutContent {
     min-height: calc(100svh - 64px);
     padding: 32px 20px;
-    scroll-margin-top: 64px;
   }
 
   .copyPanel {

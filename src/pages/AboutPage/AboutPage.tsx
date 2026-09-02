@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Playground from '../../components/Playground/Playground'
 import styles from './AboutPage.module.css'
 
 const githubUsername = import.meta.env.VITE_GITHUB_USERNAME || 'kathryntanardy'
@@ -117,61 +118,65 @@ function GitHubGraph() {
 
 function AboutPage() {
   return (
-    <section className={styles.about} id="about" aria-labelledby="about-title">
-      <div className={styles.inner}>
-        <div className={styles.copyPanel}>
-          <h2 id="about-title">Hi, I’m Kathryn!</h2>
-          <p>
-            A fifth-year Computer Science student at SFU who loves building things
-            that make people’s lives a little easier, including my own! What excites me most about
-            building is the endless possibility of turning a simple idea into something useful and
-            impactful.
-          </p>
-          <p>
-            Outside of tech, I enjoy watching TV series, listening to music, touching grass, and
-            meeting new people. I try my best to work hard, make the most of every opportunity, and
-            live life to the fullest every day. I hope to keep creating things I love and enjoy the
-            journey along the way ✨
-          </p>
-        </div>
+    <section className={styles.about} id="about" aria-label="About">
+      <Playground />
 
-        <div className={styles.actions}>
-          <a
-            className={styles.primaryAction}
-            href="/Kathryn_Resume.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            View CV
-          </a>
-          <a
-            className={styles.socialAction}
-            href={`https://github.com/${githubUsername}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            className={styles.socialAction}
-            href="https://www.linkedin.com/in/kathryntanardy"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
-        </div>
+      <section className={styles.aboutContent} aria-labelledby="about-title">
+        <div className={styles.inner}>
+          <div className={styles.copyPanel}>
+            <h2 id="about-title">Hi, I’m Kathryn!</h2>
+            <p>
+              A fifth-year Computer Science student at SFU who loves building things
+              that make people’s lives a little easier, including my own! What excites me most about
+              building is the endless possibility of turning a simple idea into something useful and
+              impactful.
+            </p>
+            <p>
+              Outside of tech, I enjoy watching TV series, listening to music, touching grass, and
+              meeting new people. I try my best to work hard, make the most of every opportunity,
+              and live life to the fullest every day. I hope to keep creating things I love and
+              enjoy the journey along the way ✨
+            </p>
+          </div>
 
-        <div className={styles.githubActivityRow}>
-          <GitHubGraph />
+          <div className={styles.actions}>
+            <a
+              className={styles.primaryAction}
+              href="/Kathryn_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View CV
+            </a>
+            <a
+              className={styles.socialAction}
+              href={`https://github.com/${githubUsername}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+            <a
+              className={styles.socialAction}
+              href="https://www.linkedin.com/in/kathryntanardy"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+          </div>
 
-          <ul className={styles.aboutNotes} aria-label="About Kathryn notes">
-            {aboutNotes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
+          <div className={styles.githubActivityRow}>
+            <GitHubGraph />
+
+            <ul className={styles.aboutNotes} aria-label="About Kathryn notes">
+              {aboutNotes.map((note) => (
+                <li key={note}>{note}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
     </section>
   )
 }

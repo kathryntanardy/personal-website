@@ -6,7 +6,7 @@ import styles from './Footer.module.css'
 const footerLinks = [
   { label: 'Work', to: '/work' },
   { label: 'About', to: '/about' },
-  { label: 'Portfolio', to: '/portfolio' },
+  { label: 'Experience', to: '/experience' },
 ]
 
 const socialLinks = [

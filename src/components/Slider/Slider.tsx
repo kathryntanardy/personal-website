@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import styles from './Slider.module.css'
 
-const sliderOptions = ['experience', 'projects', 'tech stack'] as const
+const sliderOptions = ['technical experience', 'volunteer', 'awards'] as const
 
 export type SliderOption = (typeof sliderOptions)[number]
 
@@ -17,7 +17,7 @@ function Slider({ selectedOption, onSelect }: SliderProps) {
     <div
       className={styles.slider}
       role="tablist"
-      aria-label="Portfolio sections"
+      aria-label="Experience sections"
       style={{ '--active-index': selectedIndex } as CSSProperties}
     >
       <span className={styles.activeIndicator} aria-hidden="true" />

@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-route
 import Footer from './components/Footer/Footer'
 import NavBar from './components/NavBar/NavBar'
 import AboutPage from './pages/AboutPage/AboutPage'
-import PortfolioPage from './pages/PortfolioPage/PortfolioPage'
+import ExperiencePage from './pages/ExperiencePage/ExperiencePage'
 import WorkPage from './pages/WorkPage/WorkPage'
 
 function ScrollToTop() {
@@ -26,7 +26,8 @@ function App() {
           <Route path="/" element={<WorkPage />} />
           <Route path="/work" element={<WorkPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/portfolio" element={<Navigate to="/experience" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

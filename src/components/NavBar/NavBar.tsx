@@ -4,7 +4,7 @@ import styles from './NavBar.module.css'
 const navItems = [
   { label: 'Work', to: '/work' },
   { label: 'About', to: '/about' },
-  { label: 'Portfolio', to: '/portfolio' },
+  { label: 'Experience', to: '/experience' },
 ]
 
 function NavBar() {

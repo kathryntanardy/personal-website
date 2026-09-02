@@ -1,4 +1,4 @@
-.portfolio {
+.experiencePage {
   min-height: 100svh;
   display: grid;
   align-items: start;
@@ -14,7 +14,7 @@
   padding-top: clamp(24px, 6vh, 56px);
 }
 
-.portfolio h2 {
+.experiencePage h2 {
   margin: 0 0 16px;
   color: var(--color-text-strong);
   font-family: var(--font-h2);
@@ -30,7 +30,7 @@
 }
 
 @media (max-width: 560px) {
-  .portfolio {
+  .experiencePage {
     min-height: calc(100svh - 64px);
     padding: 48px 20px;
   }

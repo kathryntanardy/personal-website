@@ -3,7 +3,7 @@
   --option-count: 3;
   --slider-padding: 5px;
 
-  width: min(100%, 470px);
+  width: min(100%, 560px);
   min-height: 42px;
   position: relative;
   display: grid;
@@ -67,15 +67,15 @@
 
 @media (max-width: 560px) {
   .slider {
-    width: min(100%, 330px);
+    width: 100%;
     min-height: 38px;
     --slider-padding: 4px;
   }
 
   .option {
     min-height: 30px;
-    padding: 0 6px;
-    font-size: 0.68rem;
+    padding: 0 4px;
+    font-size: clamp(0.58rem, 2.8vw, 0.68rem);
   }
 }
 

@@ -2,7 +2,7 @@
   min-height: 100svh;
   display: grid;
   align-items: start;
-  padding: 64px 32px;
+  padding: 32px 32px 64px;
   background: var(--color-background);
 }
 
@@ -11,7 +11,7 @@
   margin: 0 auto;
   display: grid;
   justify-items: center;
-  padding-top: clamp(24px, 6vh, 56px);
+  padding-top: 0;
 }
 
 .experiencePage h2 {
@@ -32,6 +32,6 @@
 @media (max-width: 560px) {
   .experiencePage {
     min-height: calc(100svh - 64px);
-    padding: 48px 20px;
+    padding: 28px 20px 48px;
   }
 }

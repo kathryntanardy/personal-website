@@ -1,5 +1,6 @@
 .work {
   width: 100%;
+  height: calc(100svh - 72px);
   min-height: calc(100svh - 72px);
   position: relative;
   overflow: hidden;
@@ -11,9 +12,129 @@
   scroll-margin-top: 72px;
 }
 
+.inner {
+  width: min(100%, 1160px);
+  height: calc(100svh - 72px);
+  min-height: calc(100svh - 72px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 22px;
+  padding: 36px 32px 44px;
+}
+
+.hero {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--color-text-strong);
+  font-family: var(--font-h2);
+  font-size: 4.1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.hero p {
+  margin: 10px 0 0;
+  color: #8B5347;
+  font-family: var(--font-inter);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.gallery {
+  --gallery-gap: 18px;
+
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--gallery-gap);
+}
+
+.projectRow {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gallery-gap);
+}
+
+.projectTile {
+  --project-preview-height: 100%;
+  --project-preview-width: fit-content;
+  --project-image-height: 100%;
+  --project-image-width: auto;
+  --project-image-max-width: none;
+  --project-image-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 3.6rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 560px) {
   .work {
+    height: auto;
     min-height: calc(100svh - 64px);
+    overflow: visible;
     scroll-margin-top: 64px;
+  }
+
+  .inner {
+    height: auto;
+    min-height: calc(100svh - 64px);
+    padding: 36px 18px 48px;
+  }
+
+  .hero h1 {
+    font-size: 2.55rem;
+  }
+
+  .hero p {
+    font-size: 0.8rem;
+  }
+
+  .gallery {
+    --gallery-gap: 14px;
+
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gallery-gap);
+  }
+
+  .projectRow {
+    display: contents;
+  }
+
+  .projectTile {
+    --project-preview-height: min(22svh, 165px);
+    --project-preview-width: fit-content;
+    --project-image-height: 100%;
+    --project-image-width: auto;
+    --project-image-max-width: calc(100vw - 36px);
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 2.25rem;
   }
 }

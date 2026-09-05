@@ -7,50 +7,54 @@ type Project = {
   description: string
   image: string
   details: string[]
-  websiteUrl?: string
-  websiteLabel?: string
 }
 
 const projects: Project[] = [
   {
     title: 'ParkAble',
     role: 'Backend Developer',
-    description: 'Smart accessible parking concept focused on making parking easier to find.',
+    description:
+      'An accessible parking platform that helps drivers find suitable spaces more confidently through location data and availability support.',
     image: '/work/parkable.png',
     details: ['Accessibility', 'Parking', 'Product'],
   },
   {
     title: 'MockRoom',
     role: 'Full-stack Developer',
-    description: 'A dashboard-style experience for tracking room activity and daily check-ins.',
+    description:
+      'A room management dashboard for tracking shared-space activity, check-ins, room status, and admin-facing updates.',
     image: '/work/mockroom.png',
     details: ['Dashboard', 'React', 'UX'],
   },
   {
     title: 'LoveSignal',
     role: 'Full-stack Developer',
-    description: 'A playful signal-based concept exploring long-distance connection.',
+    description:
+      'A playful connection app concept that turns small relationship moments into signals through expressive, soft UI flows.',
     image: '/work/lovesignal.png',
     details: ['Mobile', 'Branding', 'Prototype'],
   },
   {
     title: 'Hacker Portal',
     role: 'Full-stack Developer',
-    description: 'A dark interface for participants to manage applications, events, and resources.',
+    description:
+      'A participant portal that brings hackathon applications, schedules, announcements, and resources into one focused interface.',
     image: '/work/hacker-portal.png',
     details: ['Portal', 'Events', 'Frontend'],
   },
   {
     title: 'Credify',
     role: 'Mobile Developer',
-    description: 'A mobile finance concept with credit insights and progress tracking.',
+    description:
+      'A mobile finance concept for understanding credit health, tracking progress, and surfacing personalized insights.',
     image: '/work/credify.png',
     details: ['Mobile App', 'Finance', 'UI'],
   },
   {
     title: 'Hope Health Action',
     role: 'Frontend Developer',
-    description: 'A healthcare login flow with simple, focused account access.',
+    description:
+      'A healthcare access interface with a calm login flow, clear visual hierarchy, and responsive frontend styling.',
     image: '/work/hope-health-action.png',
     details: ['Healthcare', 'Auth', 'Interface'],
   },
@@ -79,8 +83,6 @@ function WorkPage() {
                   role={project.role}
                   description={project.description}
                   details={project.details}
-                  websiteUrl={project.websiteUrl}
-                  websiteLabel={project.websiteLabel}
                   className={styles.projectTile}
                 />
               ))}

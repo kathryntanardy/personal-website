@@ -1,4 +1,5 @@
 import styles from './TechStackCard.module.css'
+import TechStackPill from '../ui/TechStackPill/TechStackPill'
 
 type TechStackCardProps = {
   title: string
@@ -12,7 +13,7 @@ function TechStackCard({ title, items }: TechStackCardProps) {
 
       <ul className={styles.tags} aria-label={title}>
         {items.map((item) => (
-          <li key={item}>{item}</li>
+          <TechStackPill key={item}>{item}</TechStackPill>
         ))}
       </ul>
     </article>

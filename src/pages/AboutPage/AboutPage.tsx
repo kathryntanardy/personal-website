@@ -121,24 +121,8 @@ function AboutPage() {
     <section className={styles.about} id="about" aria-label="About">
       <Playground />
 
-      <section className={styles.aboutContent} aria-labelledby="about-title">
+      <section className={styles.aboutContent}>
         <div className={styles.inner}>
-          <div className={styles.copyPanel}>
-            <h2 id="about-title">Hi, I’m Kathryn!</h2>
-            <p>
-              A fifth-year Computer Science student at SFU who loves building things
-              that make people’s lives a little easier, including my own! What excites me most about
-              building is the endless possibility of turning a simple idea into something useful and
-              impactful.
-            </p>
-            <p>
-              Outside of tech, I enjoy watching TV series, listening to music, touching grass, and
-              meeting new people. I try my best to work hard, make the most of every opportunity,
-              and live life to the fullest every day. I hope to keep creating things I love and
-              enjoy the journey along the way ✨
-            </p>
-          </div>
-
           <div className={styles.actions}>
             <a
               className={styles.primaryAction}

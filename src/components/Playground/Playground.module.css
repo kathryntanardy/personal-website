@@ -15,6 +15,76 @@
   top: clamp(72px, 12vh, 120px);
   right: clamp(24px, 4.8vw, 72px);
   z-index: 12;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.actions {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  gap: clamp(10px, 1.2vw, 16px);
+}
+
+.actions a {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: var(--foundation-orange-orange-800);
+  box-shadow: 0 4px 7px rgb(103 85 77 / 0.24);
+  color: var(--foundation-white-white-50);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
+  font-size: clamp(0.98rem, 1.18vw, 1.18rem);
+  text-decoration: none;
+  transform-origin: center;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.actions a:hover,
+.actions a:focus-visible {
+  color: var(--foundation-orange-orange-100);
+  transform: translateY(-2px);
+}
+
+.socialAction {
+  position: relative;
+  width: fit-content;
+  justify-self: center;
+  text-shadow: 0 0 0 transparent;
+}
+
+.actionText {
+  position: relative;
+}
+
+.actionText::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.socialAction:hover,
+.socialAction:focus-visible {
+  text-shadow: 0.35px 0 currentColor, -0.35px 0 currentColor;
+}
+
+.socialAction:hover .actionText::after,
+.socialAction:focus-visible .actionText::after {
+  transform: scaleX(1);
 }
 
 .playground::after {
@@ -46,5 +116,21 @@
     z-index: auto;
     order: 1;
     margin-top: 24px;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    justify-items: center;
+  }
+
+  .actions a {
+    font-size: 0.98rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .actions a {
+    transition: none;
   }
 }

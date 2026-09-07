@@ -88,6 +88,32 @@ function Playground() {
     <section className={styles.playground} aria-label="Photo playground">
       <div className={styles.chatBoxLayer}>
         <ChatBox />
+        <div className={styles.actions}>
+          <a
+            className={styles.socialAction}
+            href="/Kathryn_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className={styles.actionText}>View CV</span>
+          </a>
+          <a
+            className={styles.socialAction}
+            href="https://github.com/kathryntanardy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className={styles.actionText}>GitHub</span>
+          </a>
+          <a
+            className={styles.socialAction}
+            href="https://www.linkedin.com/in/kathryntanardy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className={styles.actionText}>LinkedIn</span>
+          </a>
+        </div>
       </div>
 
       {openFolders.map((folder) => (

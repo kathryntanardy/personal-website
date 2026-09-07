@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Playground from '../../components/Playground/Playground'
 import styles from './AboutPage.module.css'
 
-const githubUsername = import.meta.env.VITE_GITHUB_USERNAME || 'kathryntanardy'
 const githubGraphEndpoint = import.meta.env.VITE_GITHUB_ACTIVITY_ENDPOINT || '/api/github-contribution'
 
 const aboutNotes = [
@@ -123,33 +122,6 @@ function AboutPage() {
 
       <section className={styles.aboutContent}>
         <div className={styles.inner}>
-          <div className={styles.actions}>
-            <a
-              className={styles.primaryAction}
-              href="/Kathryn_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View CV
-            </a>
-            <a
-              className={styles.socialAction}
-              href={`https://github.com/${githubUsername}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              className={styles.socialAction}
-              href="https://www.linkedin.com/in/kathryntanardy"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-          </div>
-
           <div className={styles.githubActivityRow}>
             <GitHubGraph />
 

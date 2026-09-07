@@ -16,81 +16,6 @@
   gap: clamp(18px, 2.2vw, 26px);
 }
 
-.actions {
-  width: fit-content;
-  justify-self: end;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  align-items: center;
-  gap: clamp(14px, 1.8vw, 24px);
-  padding-right: clamp(0px, 1vw, 18px);
-}
-
-.actions a {
-  min-height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #8B5347;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
-  font-size: clamp(0.98rem, 1.18vw, 1.18rem);
-  text-decoration: none;
-  transform-origin: center;
-  transition:
-    color 180ms ease,
-    transform 180ms ease;
-}
-
-.actions a:hover,
-.actions a:focus-visible {
-  color: var(--foundation-orange-orange-900);
-  transform: translateY(-2px);
-}
-
-.primaryAction {
-  min-width: 92px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: var(--foundation-orange-orange-800);
-  box-shadow: 0 4px 7px rgb(103 85 77 / 0.24);
-  color: var(--foundation-white-white-50) !important;
-}
-
-.primaryAction:hover,
-.primaryAction:focus-visible {
-  background: var(--foundation-orange-orange-900);
-}
-
-.socialAction {
-  position: relative;
-  width: fit-content;
-  justify-self: center;
-  text-shadow: 0 0 0 transparent;
-}
-
-.socialAction::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  bottom: 2px;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 180ms ease;
-}
-
-.socialAction:hover,
-.socialAction:focus-visible {
-  text-shadow: 0.35px 0 currentColor, -0.35px 0 currentColor;
-}
-
-.socialAction:hover::after,
-.socialAction:focus-visible::after {
-  transform: scaleX(1);
-}
-
 .githubActivityRow {
   width: 100%;
   display: grid;
@@ -184,12 +109,6 @@
 }
 
 @media (max-width: 900px) {
-  .actions {
-    width: 100%;
-    justify-self: center;
-    gap: 22px;
-  }
-
   .githubActivityRow {
     grid-template-columns: 1fr;
     align-items: start;
@@ -210,24 +129,7 @@
     padding: 32px 20px;
   }
 
-  .actions {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    justify-items: center;
-  }
-
-  .actions a {
-    font-size: 0.98rem;
-  }
-
-  .primaryAction {
-    min-width: 92px;
-  }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .actions a {
-    transition: none;
-  }
 }

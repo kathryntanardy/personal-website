@@ -1,17 +1,36 @@
 .chatBox {
   width: clamp(320px, 26vw, 430px);
-  min-height: clamp(410px, 48vh, 520px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 22px;
+  height: clamp(450px, 52vh, 560px);
+  position: relative;
   padding: clamp(30px, 3vw, 46px) clamp(18px, 1.8vw, 24px);
   border: 3px solid var(--foundation-orange-orange-900);
   border-radius: 34px;
   background: var(--foundation-orange-orange-100);
   color: var(--text-primary);
   font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-system-sans);
+  overflow-y: auto;
   box-shadow: 0 1px 0 rgb(103 85 77 / 0.08);
+}
+
+.chatStream {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 22px;
+}
+
+.chatBox::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatBox::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chatBox::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgb(103 85 77 / 0.24);
 }
 
 .messages {
@@ -19,23 +38,13 @@
   gap: clamp(16px, 2.2vh, 28px);
 }
 
-.message {
+.message,
+.profileBubble {
   position: relative;
   width: min(94%, 372px);
-  min-height: clamp(38px, 3.7vw, 48px);
   margin: 0;
-  padding: clamp(8px, 0.8vw, 10px) clamp(28px, 2.8vw, 42px) clamp(8px, 0.8vw, 10px) clamp(18px, 2vw, 28px);
-  display: flex;
-  align-items: center;
-  border-radius: 999px;
-  background: var(--foundation-orange-orange-500);
-  box-shadow:
-    0 4px 7px rgb(103 85 77 / 0.12),
-    0 13px 20px rgb(103 85 77 / 0.09);
   color: #8B5347;
   font-size: clamp(0.9rem, 1.06vw, 1.06rem);
-  line-height: 1.25;
-  justify-self: center;
   transform: translateY(8px) scale(0.98);
   opacity: 0;
   transition:
@@ -43,30 +52,56 @@
     transform 360ms ease;
 }
 
-.message::before {
+.message {
+  min-height: clamp(38px, 3.7vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  padding: clamp(8px, 0.8vw, 10px) clamp(28px, 2.8vw, 42px) clamp(8px, 0.8vw, 10px) clamp(18px, 2vw, 28px);
+  border-radius: 999px;
+  background: var(--foundation-orange-orange-500);
+  box-shadow:
+    0 4px 7px rgb(103 85 77 / 0.12),
+    0 13px 20px rgb(103 85 77 / 0.09);
+  line-height: 1.25;
+}
+
+.profileBubble {
+  align-self: center;
+  padding: clamp(22px, 2.5vw, 34px) clamp(18px, 2.1vw, 28px);
+  border-radius: clamp(22px, 3vw, 36px);
+  background: var(--foundation-orange-orange-400);
+  line-height: 1.36;
+}
+
+.message::before,
+.profileBubble::before {
   content: "";
   position: absolute;
-  right: clamp(8px, 0.95vw, 14px);
-  bottom: clamp(-8px, -0.8vw, -6px);
   width: clamp(16px, 1.8vw, 24px);
   height: clamp(16px, 1.8vw, 24px);
-  background: var(--foundation-orange-orange-500);
+  background: inherit;
   clip-path: polygon(0 0, 100% 100%, 0 100%);
-  transform: rotate(-60deg);
   transform-origin: center;
 }
 
-.message::after {
-  content: none;
+.message::before {
+  right: 2px;
+  bottom: 0;
+  transform: rotate(-75deg);
 }
 
-.messageVisible {
+.profileBubble::before {
+  right: 4px;
+  bottom: -1px;
+  transform: rotate(-85deg);
+}
+
+.messageVisible,
+.profileBubbleVisible {
   transform: translateY(0) scale(1);
   opacity: 1;
-}
-
-.messageHidden {
-  pointer-events: none;
+  animation: messageEnter 360ms ease both;
 }
 
 .messageText {
@@ -107,12 +142,6 @@
   animation-delay: 400ms;
 }
 
-.typingComplete span {
-  animation: none;
-  opacity: 0.74;
-  transform: translateY(0);
-}
-
 @keyframes typingPulse {
 
   0%,
@@ -127,10 +156,22 @@
   }
 }
 
+@keyframes messageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 980px) {
   .chatBox {
     width: min(100%, 390px);
-    min-height: 0;
+    height: 450px;
     padding: 28px 18px;
     border-radius: 28px;
   }
@@ -139,22 +180,33 @@
 @media (max-width: 560px) {
   .chatBox {
     width: min(94%, 326px);
+  }
+
+  .chatStream {
     gap: 18px;
   }
 
-  .message {
+  .message,
+  .profileBubble {
     width: min(100%, 340px);
-    min-height: 38px;
     font-size: 0.86rem;
+  }
+
+  .message {
+    min-height: 38px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .message {
+  .message,
+  .profileBubble {
     transform: none;
     transition: none;
+    animation: none;
   }
 
+  .messageVisible,
+  .profileBubbleVisible,
   .typingLoading span {
     animation: none;
   }

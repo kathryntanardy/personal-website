@@ -57,6 +57,8 @@
 
 .projectTile {
   --project-position: absolute;
+  --project-top: 0;
+  --project-left: 50%;
   --project-x: -50%;
   --project-border-width: 8px;
   --project-border-radius: 0;
@@ -69,60 +71,54 @@
   --project-image-max-width: none;
   --project-image-fit: contain;
   --project-image-position: center;
+
+  top: var(--project-top);
+  left: var(--project-left);
   box-shadow: 0 14px 28px rgb(103 85 77 / 0.08);
 }
 
 .parkable {
   --project-z-index: 2;
+  --project-top: calc(var(--work-tile-height) * 0.2);
+  --project-left: calc(50% - clamp(280px, 25vw, 430px));
   --project-rotate: -13deg;
-
-  top: calc(var(--work-tile-height) * 0.2);
-  left: calc(50% - clamp(280px, 25vw, 430px));
 }
 
 .mockroom {
   --project-z-index: 4;
   --project-rotate: 0deg;
-
-  top: 0;
-  left: 50%;
 }
 
 .lovesignal {
   --project-z-index: 2;
+  --project-top: calc(var(--work-tile-height) * 0.14);
+  --project-left: calc(50% + clamp(250px, 22vw, 390px));
   --project-rotate: 22deg;
-
-  top: calc(var(--work-tile-height) * 0.14);
-  left: calc(50% + clamp(250px, 22vw, 390px));
 }
 
 .hackerPortal {
   --project-z-index: 5;
+  --project-top: calc(var(--work-tile-height) * 0.7);
   --project-rotate: 0deg;
-
-  top: calc(var(--work-tile-height) * 0.7);
-  left: 50%;
 }
 
 .credify {
   --project-z-index: 3;
+  --project-top: calc(var(--work-tile-height) * 0.88);
+  --project-left: calc(50% - clamp(270px, 24vw, 400px));
   --project-rotate: -18deg;
-
-  top: calc(var(--work-tile-height) * 0.88);
-  left: calc(50% - clamp(270px, 24vw, 400px));
 }
 
 .hopeHealth {
   --project-z-index: 3;
+  --project-top: calc(var(--work-tile-height) * 0.98);
+  --project-left: calc(50% + clamp(250px, 22vw, 360px));
   --project-preview-width: var(--work-tile-height);
   --project-image-width: 100%;
   --project-image-height: 100%;
   --project-image-fit: cover;
   --project-image-position: center;
   --project-rotate: 28deg;
-
-  top: calc(var(--work-tile-height) * 0.98);
-  left: calc(50% + clamp(250px, 22vw, 360px));
 }
 
 @media (max-width: 900px) {
@@ -133,19 +129,19 @@
   }
 
   .parkable {
-    left: calc(50% - clamp(190px, 32vw, 280px));
+    --project-left: calc(50% - clamp(190px, 32vw, 280px));
   }
 
   .lovesignal {
-    left: calc(50% + clamp(176px, 29vw, 260px));
+    --project-left: calc(50% + clamp(176px, 29vw, 260px));
   }
 
   .credify {
-    left: calc(50% - clamp(180px, 30vw, 250px));
+    --project-left: calc(50% - clamp(180px, 30vw, 250px));
   }
 
   .hopeHealth {
-    left: calc(50% + clamp(168px, 28vw, 236px));
+    --project-left: calc(50% + clamp(168px, 28vw, 236px));
   }
 }
 
@@ -192,33 +188,31 @@
   }
 
   .parkable {
-    top: 32px;
-    left: calc(50% - clamp(86px, 28vw, 128px));
+    --project-top: 32px;
+    --project-left: calc(50% - clamp(86px, 28vw, 128px));
   }
 
   .mockroom {
-    top: 8px;
-    left: 50%;
+    --project-top: 8px;
   }
 
   .lovesignal {
-    top: calc(var(--work-tile-height) * 0.54);
-    left: calc(50% + clamp(84px, 27vw, 122px));
+    --project-top: calc(var(--work-tile-height) * 0.54);
+    --project-left: calc(50% + clamp(84px, 27vw, 122px));
   }
 
   .hackerPortal {
-    top: calc(var(--work-tile-height) * 1.2);
-    left: 50%;
+    --project-top: calc(var(--work-tile-height) * 1.2);
   }
 
   .credify {
-    top: calc(var(--work-tile-height) * 1.76);
-    left: calc(50% - clamp(78px, 25vw, 112px));
+    --project-top: calc(var(--work-tile-height) * 1.76);
+    --project-left: calc(50% - clamp(78px, 25vw, 112px));
   }
 
   .hopeHealth {
-    top: calc(var(--work-tile-height) * 1.86);
-    left: calc(50% + clamp(72px, 23vw, 106px));
+    --project-top: calc(var(--work-tile-height) * 1.86);
+    --project-left: calc(50% + clamp(72px, 23vw, 106px));
   }
 }
 

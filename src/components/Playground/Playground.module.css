@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: center;
   padding: 8px 20px;
-  border-radius: 999px;
+  border-radius: 10px;
   background: var(--foundation-orange-orange-800);
   box-shadow: 0 4px 7px rgb(103 85 77 / 0.24);
   color: var(--foundation-white-white-50);

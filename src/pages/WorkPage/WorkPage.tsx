@@ -7,6 +7,7 @@ type Project = {
   description: string
   image: string
   details: string[]
+  frameClass: string
 }
 
 const projects: Project[] = [
@@ -17,6 +18,7 @@ const projects: Project[] = [
       'An accessible parking platform that helps drivers find suitable spaces more confidently through location data and availability support.',
     image: '/work/parkable.png',
     details: ['Accessibility', 'Parking', 'Product'],
+    frameClass: 'parkable',
   },
   {
     title: 'MockRoom',
@@ -25,6 +27,7 @@ const projects: Project[] = [
       'A room management dashboard for tracking shared-space activity, check-ins, room status, and admin-facing updates.',
     image: '/work/mockroom.png',
     details: ['Dashboard', 'React', 'UX'],
+    frameClass: 'mockroom',
   },
   {
     title: 'LoveSignal',
@@ -33,6 +36,7 @@ const projects: Project[] = [
       'A playful connection app concept that turns small relationship moments into signals through expressive, soft UI flows.',
     image: '/work/lovesignal.png',
     details: ['Mobile', 'Branding', 'Prototype'],
+    frameClass: 'lovesignal',
   },
   {
     title: 'Hacker Portal',
@@ -41,6 +45,7 @@ const projects: Project[] = [
       'A participant portal that brings hackathon applications, schedules, announcements, and resources into one focused interface.',
     image: '/work/hacker-portal.png',
     details: ['Portal', 'Events', 'Frontend'],
+    frameClass: 'hackerPortal',
   },
   {
     title: 'Credify',
@@ -49,6 +54,7 @@ const projects: Project[] = [
       'A mobile finance concept for understanding credit health, tracking progress, and surfacing personalized insights.',
     image: '/work/credify.png',
     details: ['Mobile App', 'Finance', 'UI'],
+    frameClass: 'credify',
   },
   {
     title: 'Hope Health Action',
@@ -57,10 +63,9 @@ const projects: Project[] = [
       'A healthcare access interface with a calm login flow, clear visual hierarchy, and responsive frontend styling.',
     image: '/work/hope-health-action.png',
     details: ['Healthcare', 'Auth', 'Interface'],
+    frameClass: 'hopeHealth',
   },
 ]
-
-const projectRows = [projects.slice(0, 3), projects.slice(3)]
 
 function WorkPage() {
   return (
@@ -71,22 +76,18 @@ function WorkPage() {
           <p>Developer @ SFU Surge, Prev. ICBC, BC Hydro</p>
         </header>
 
-        <div className={styles.gallery} aria-label="Selected work">
-          {projectRows.map((row, index) => (
-            <div className={styles.projectRow} key={`project-row-${index + 1}`}>
-              {row.map((project) => (
-                <ProjectImagePopup
-                  key={project.title}
-                  src={project.image}
-                  alt={`${project.title} project preview`}
-                  title={project.title}
-                  role={project.role}
-                  description={project.description}
-                  details={project.details}
-                  className={styles.projectTile}
-                />
-              ))}
-            </div>
+        <div className={styles.collage} aria-label="Selected work">
+          {projects.map((project) => (
+            <ProjectImagePopup
+              key={project.title}
+              src={project.image}
+              alt={`${project.title} project preview`}
+              title={project.title}
+              role={project.role}
+              description={project.description}
+              details={project.details}
+              className={`${styles.projectTile} ${styles[project.frameClass]}`}
+            />
           ))}
         </div>
       </div>

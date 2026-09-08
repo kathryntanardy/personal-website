@@ -2,12 +2,14 @@
   height: var(--project-preview-height, 184px);
   width: var(--project-preview-width, fit-content);
   max-width: 100%;
+  position: var(--project-position, relative);
+  z-index: var(--project-z-index, auto);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 3px solid #B98779;
-  border-radius: 8px;
+  border: var(--project-border-width, 3px) solid var(--project-border-color, #B98779);
+  border-radius: var(--project-border-radius, 8px);
   background: var(--foundation-white-white-50);
   box-shadow: 0 1px 0 rgb(103 85 77 / 0.16);
   cursor: pointer;
@@ -16,14 +18,15 @@
     border-color 180ms ease,
     box-shadow 180ms ease,
     transform 180ms ease;
+  transform: translateX(var(--project-x, 0)) translateY(var(--project-y, 0)) rotate(var(--project-rotate, 0deg));
 }
 
 .tile:hover,
 .tile:focus-visible {
-  border-color: var(--foundation-orange-orange-900);
+  border-color: var(--project-border-hover-color, var(--foundation-orange-orange-900));
   box-shadow: 0 14px 24px rgb(103 85 77 / 0.18);
   outline: none;
-  transform: translateY(-4px);
+  transform: translateX(var(--project-x, 0)) translateY(calc(var(--project-y, 0px) - 6px)) rotate(var(--project-rotate, 0deg));
 }
 
 .previewImage {
@@ -32,7 +35,7 @@
   height: var(--project-image-height, 100%);
   display: block;
   object-fit: var(--project-image-fit, contain);
-  object-position: center;
+  object-position: var(--project-image-position, center);
   background: var(--foundation-white-white-50);
 }
 

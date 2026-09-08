@@ -1,7 +1,7 @@
 .work {
   width: 100%;
   height: calc(100svh - 72px);
-  min-height: calc(100svh - 72px);
+  min-height: 560px;
   position: relative;
   overflow: hidden;
   background-color: var(--color-background);
@@ -9,14 +9,15 @@
 }
 
 .inner {
-  width: min(100%, 1160px);
-  height: calc(100svh - 72px);
-  min-height: calc(100svh - 72px);
+  --work-tile-height: clamp(190px, min(22vw, 35svh), 300px);
+
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  gap: 22px;
-  padding: 36px 32px 44px;
+  gap: 0;
+  padding: clamp(34px, 4.7svh, 48px) 0 0;
 }
 
 .hero {
@@ -28,59 +29,129 @@
   margin: 0;
   color: var(--color-text-strong);
   font-family: var(--font-h2);
-  font-size: 4.1rem;
+  font-size: clamp(3.55rem, 7.2vw, 4.75rem);
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 0.9;
+  line-height: 0.82;
   white-space: nowrap;
 }
 
 .hero p {
-  margin: 10px 0 0;
+  margin: 12px 0 0;
   color: #8B5347;
   font-family: var(--font-inter);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.35;
 }
 
-.gallery {
-  --gallery-gap: 18px;
-
+.collage {
+  width: 100vw;
   height: 100%;
   min-height: 0;
-  display: grid;
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: var(--gallery-gap);
-}
-
-.projectRow {
-  min-width: 0;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--gallery-gap);
+  position: relative;
+  left: 50%;
+  margin-top: clamp(42px, 7.6svh, 66px);
+  transform: translateX(-50%);
 }
 
 .projectTile {
-  --project-preview-height: 100%;
+  --project-position: absolute;
+  --project-x: -50%;
+  --project-border-width: 8px;
+  --project-border-radius: 0;
+  --project-border-color: var(--foundation-orange-orange-600);
+  --project-border-hover-color: var(--foundation-orange-orange-600);
+  --project-preview-height: var(--work-tile-height);
   --project-preview-width: fit-content;
   --project-image-height: 100%;
   --project-image-width: auto;
   --project-image-max-width: none;
   --project-image-fit: contain;
+  --project-image-position: center;
+  box-shadow: 0 14px 28px rgb(103 85 77 / 0.08);
+}
+
+.parkable {
+  --project-z-index: 2;
+  --project-rotate: -13deg;
+
+  top: calc(var(--work-tile-height) * 0.2);
+  left: calc(50% - clamp(280px, 25vw, 430px));
+}
+
+.mockroom {
+  --project-z-index: 4;
+  --project-rotate: 0deg;
+
+  top: 0;
+  left: 50%;
+}
+
+.lovesignal {
+  --project-z-index: 2;
+  --project-rotate: 22deg;
+
+  top: calc(var(--work-tile-height) * 0.14);
+  left: calc(50% + clamp(250px, 22vw, 390px));
+}
+
+.hackerPortal {
+  --project-z-index: 5;
+  --project-rotate: 0deg;
+
+  top: calc(var(--work-tile-height) * 0.7);
+  left: 50%;
+}
+
+.credify {
+  --project-z-index: 3;
+  --project-rotate: -18deg;
+
+  top: calc(var(--work-tile-height) * 0.88);
+  left: calc(50% - clamp(270px, 24vw, 400px));
+}
+
+.hopeHealth {
+  --project-z-index: 3;
+  --project-preview-width: var(--work-tile-height);
+  --project-image-width: 100%;
+  --project-image-height: 100%;
+  --project-image-fit: cover;
+  --project-image-position: center;
+  --project-rotate: 28deg;
+
+  top: calc(var(--work-tile-height) * 0.98);
+  left: calc(50% + clamp(250px, 22vw, 360px));
 }
 
 @media (max-width: 900px) {
-  .hero h1 {
-    font-size: 3.6rem;
+  .inner {
+    --work-tile-height: clamp(172px, 27vw, 220px);
+
+    padding-inline: 20px;
+  }
+
+  .parkable {
+    left: calc(50% - clamp(190px, 32vw, 280px));
+  }
+
+  .lovesignal {
+    left: calc(50% + clamp(176px, 29vw, 260px));
+  }
+
+  .credify {
+    left: calc(50% - clamp(180px, 30vw, 250px));
+  }
+
+  .hopeHealth {
+    left: calc(50% + clamp(168px, 28vw, 236px));
   }
 }
 
 @media (max-width: 680px) {
   .hero h1 {
-    font-size: 3rem;
+    font-size: clamp(3rem, 15vw, 4rem);
   }
 }
 
@@ -93,39 +164,61 @@
   }
 
   .inner {
+    --work-tile-height: clamp(148px, 28svh, 190px);
+
     height: auto;
     min-height: calc(100svh - 64px);
     padding: 36px 18px 48px;
   }
 
   .hero h1 {
-    font-size: 2.55rem;
+    font-size: clamp(2.65rem, 16vw, 3.5rem);
   }
 
   .hero p {
     font-size: 0.8rem;
   }
 
-  .gallery {
-    --gallery-gap: 14px;
-
+  .collage {
     height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--gallery-gap);
-  }
-
-  .projectRow {
-    display: contents;
+    min-height: calc(var(--work-tile-height) * 2.82);
+    margin-top: 30px;
   }
 
   .projectTile {
-    --project-preview-height: min(22svh, 165px);
-    --project-preview-width: fit-content;
-    --project-image-height: 100%;
     --project-image-width: auto;
+    --project-image-height: 100%;
     --project-image-max-width: calc(100vw - 36px);
+  }
+
+  .parkable {
+    top: 32px;
+    left: calc(50% - clamp(86px, 28vw, 128px));
+  }
+
+  .mockroom {
+    top: 8px;
+    left: 50%;
+  }
+
+  .lovesignal {
+    top: calc(var(--work-tile-height) * 0.54);
+    left: calc(50% + clamp(84px, 27vw, 122px));
+  }
+
+  .hackerPortal {
+    top: calc(var(--work-tile-height) * 1.2);
+    left: 50%;
+  }
+
+  .credify {
+    top: calc(var(--work-tile-height) * 1.76);
+    left: calc(50% - clamp(78px, 25vw, 112px));
+  }
+
+  .hopeHealth {
+    top: calc(var(--work-tile-height) * 1.86);
+    left: calc(50% + clamp(72px, 23vw, 106px));
   }
 }
 

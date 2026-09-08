@@ -19,8 +19,8 @@ function TrashBin({ items, isOpen, onToggle, onRestore }: TrashBinProps) {
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
             <span>Bin</span>
-            <button type="button" onClick={onToggle} aria-label="Close trash bin">
-              x
+            <button className={styles.closeButton} type="button" onClick={onToggle} aria-label="Close trash bin">
+              <img src="/x.svg" alt="" />
             </button>
           </div>
           <div className={styles.panelBody}>
@@ -43,7 +43,12 @@ function TrashBin({ items, isOpen, onToggle, onRestore }: TrashBinProps) {
         </div>
       ) : null}
 
-      <button className={styles.trashButton} type="button" onClick={onToggle} aria-label="Open trash bin">
+      <button
+        className={styles.trashButton}
+        type="button"
+        onClick={onToggle}
+        aria-label="Open trash bin"
+      >
         <img className={styles.trashIcon} src="/trashbin.svg" alt="" />
         <span>Trash bin</span>
       </button>

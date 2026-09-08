@@ -27,7 +27,7 @@
 }
 
 .panel {
-  width: min(520px, calc(100vw - 40px));
+  width: min(430px, calc(100vw - 40px));
   border: 2px solid var(--foundation-orange-orange-900);
   background: var(--foundation-blue-blue-50);
   box-shadow: 0 8px 18px rgb(103 85 77 / 0.16);
@@ -44,30 +44,49 @@
   color: #1f1f1f;
 }
 
-.panelHeader button {
-  width: 20px;
-  height: 20px;
+.closeButton {
+  width: 18px;
+  height: 18px;
   display: grid;
   place-items: center;
+  flex: 0 0 auto;
   padding: 0;
   border: 0;
   background: transparent;
+  color: #000;
   cursor: pointer;
+  font-size: 1rem;
   font-weight: 700;
+  line-height: 1;
+}
+
+.closeButton img {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  color: var(--text-primary);
 }
 
 .panelBody {
   min-height: 150px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 86px);
+  grid-auto-rows: max-content;
   align-items: flex-start;
   gap: 28px;
   padding: 28px;
 }
 
 .empty {
+  grid-column: 1 / -1;
   margin: 0;
   color: var(--foundation-orange-orange-800);
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .restoreButton {
@@ -95,5 +114,16 @@
     position: static;
     justify-items: center;
     margin-top: 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .panel {
+    width: min(256px, calc(100vw - 40px));
+  }
+
+  .panelBody {
+    grid-template-columns: repeat(2, 86px);
+    gap: 24px 28px;
   }
 }

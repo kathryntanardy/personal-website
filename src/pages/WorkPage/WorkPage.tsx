@@ -3,66 +3,41 @@ import ProjectImagePopup from '../../components/ui/ProjectImagePopup/ProjectImag
 
 type Project = {
   title: string
-  role: string
-  description: string
   image: string
-  details: string[]
   frameClass: string
+  popupSize?: 'compact'
 }
 
 const projects: Project[] = [
   {
     title: 'ParkAble',
-    role: 'Backend Developer',
-    description:
-      'An accessible parking platform that helps drivers find suitable spaces more confidently through location data and availability support.',
     image: '/work/parkable.png',
-    details: ['Accessibility', 'Parking', 'Product'],
     frameClass: 'parkable',
   },
   {
     title: 'MockRoom',
-    role: 'Full-stack Developer',
-    description:
-      'A room management dashboard for tracking shared-space activity, check-ins, room status, and admin-facing updates.',
     image: '/work/mockroom.png',
-    details: ['Dashboard', 'React', 'UX'],
     frameClass: 'mockroom',
   },
   {
     title: 'LoveSignal',
-    role: 'Full-stack Developer',
-    description:
-      'A playful connection app concept that turns small relationship moments into signals through expressive, soft UI flows.',
     image: '/work/lovesignal.png',
-    details: ['Mobile', 'Branding', 'Prototype'],
     frameClass: 'lovesignal',
   },
   {
     title: 'Hacker Portal',
-    role: 'Full-stack Developer',
-    description:
-      'A participant portal that brings hackathon applications, schedules, announcements, and resources into one focused interface.',
     image: '/work/hacker-portal.png',
-    details: ['Portal', 'Events', 'Frontend'],
     frameClass: 'hackerPortal',
   },
   {
     title: 'Credify',
-    role: 'Mobile Developer',
-    description:
-      'A mobile finance concept for understanding credit health, tracking progress, and surfacing personalized insights.',
     image: '/work/credify.png',
-    details: ['Mobile App', 'Finance', 'UI'],
     frameClass: 'credify',
+    popupSize: 'compact',
   },
   {
     title: 'Hope Health Action',
-    role: 'Frontend Developer',
-    description:
-      'A healthcare access interface with a calm login flow, clear visual hierarchy, and responsive frontend styling.',
     image: '/work/hope-health-action.png',
-    details: ['Healthcare', 'Auth', 'Interface'],
     frameClass: 'hopeHealth',
   },
 ]
@@ -83,9 +58,7 @@ function WorkPage() {
               src={project.image}
               alt={`${project.title} project preview`}
               title={project.title}
-              role={project.role}
-              description={project.description}
-              details={project.details}
+              popupSize={project.popupSize}
               className={`${styles.projectTile} ${styles[project.frameClass]}`}
             />
           ))}
